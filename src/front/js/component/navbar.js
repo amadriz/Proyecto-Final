@@ -57,6 +57,13 @@ export const Navbars = () => {
 								<Form.Group controlId="formBasicCheckbox">
 									{/* <Form.Check type="checkbox" label="Check me out" /> */}
 								</Form.Group>
+								<Link
+									className="btn btn-link float-left ml-1"
+									eventKey={2}
+									onClick={handleClose}
+									to="/recuperar">
+									¿Ha olvidado su contraseña?
+								</Link>
 							</Form>
 						</Modal.Body>
 						<Modal.Footer>
@@ -71,7 +78,7 @@ export const Navbars = () => {
 						<button href="#deets" className="btn btn-outline-primary float-right" onClick={handleShow}>
 							Login
 						</button>
-						<Link className="btn btn-outline-warning float-right ml-1" eventKey={2} to="/recuperar">
+						<Link className="btn btn-outline-warning float-right ml-1" eventKey={2} to="/registro">
 							Register
 						</Link>
 					</Nav>

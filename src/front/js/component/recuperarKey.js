@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 export const RecuperarKey = () => {
 	return (
 		<>
-			<Container className="mt-5 vs-container">
+			<Container className="mt-auto vs-container">
 				<Row className="mt-5">
 					<Col sm={12}>
 						<h1>Actualice su contraseña</h1>
