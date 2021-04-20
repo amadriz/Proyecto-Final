@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Container, Row, Col } from "react-bootstrap";
+import { Slider } from "../component/slider";
 
 import "../../styles/home.scss";
 
@@ -10,6 +11,7 @@ export const Home = () => {
 
 	return (
 		<>
+			<Slider />
 			<Container fluid>
 				<Row className="mt-5">
 					<Col sm={12}>
