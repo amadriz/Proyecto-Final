@@ -6,11 +6,10 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 import { Navbars } from "./component/navbar";
-
 import { Footer } from "./component/footer";
 import { RecuperarKey } from "./component/recuperarKey";
+import { ValidarCuenta } from "./component/validarCuenta";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +26,9 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+						<Route exact path="/verificar">
+							<ValidarCuenta />
 						</Route>
 						<Route exact path="/recuperar">
 							<RecuperarKey />
