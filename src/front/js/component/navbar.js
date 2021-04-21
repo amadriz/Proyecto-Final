@@ -71,9 +71,9 @@ export const Navbars = () => {
 						<button href="#deets" className="btn btn-outline-primary float-right" onClick={handleShow}>
 							Login
 						</button>
-						<button className="btn btn-outline-warning float-right ml-1" eventKey={2} href="#memes">
+						<Link className="btn btn-outline-warning float-right ml-1" eventKey={2} to="/registro">
 							Register
-						</button>
+						</Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
