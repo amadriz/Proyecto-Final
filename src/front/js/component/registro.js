@@ -4,20 +4,6 @@ import { Container, Row, Col, Form, Group, Button } from "react-bootstrap";
 export const Registro = () => (
 	<Container className="mt-5">
 		<Form className="mt-5">
-			{/* <Row>
-				<Col>
-					<h1>Datos Personales</h1>
-					<Form.Control placeholder="Tipo de identificación" />
-				</Col>
-				<Col>
-					<Form.Control placeholder="Número de identificación" />
-				</Col>
-				<Col>
-					<Form.Control placeholder="Fecha de nacimiento" />
-				</Col>
-
-			</Row>
-		</Form> */}
 			{/* CEDULA */}
 			<Form.Row>
 				<Form.Group as={Col} controlId="formGridCity">
