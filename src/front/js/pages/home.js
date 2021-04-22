@@ -13,7 +13,6 @@ export const Home = () => {
 		<>
 			<Slider />
 			<Container fluid>
-				<Registro />
 				<Row className="mt-5">
 					<Col sm={12}>
 						<h1 className="text-center">Sección 1</h1>
