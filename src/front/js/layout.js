@@ -1,16 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 import { Navbars } from "./component/navbar";
-import { Registro } from "./component/registro";
-
 import { Footer } from "./component/footer";
+import { RecuperarKey } from "./component/recuperarKey";
+import { ValidarCuenta } from "./component/validarCuenta";
 
 //create your first component
 const Layout = () => {
@@ -28,8 +26,6 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/registro">
-							<Registro />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
