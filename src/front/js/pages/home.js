@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Container, Row, Col } from "react-bootstrap";
+import { Slider } from "../component/slider";
+
+import arteTipsCurri from "../../img/arteTipsCurri.png";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
