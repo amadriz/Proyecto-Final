@@ -10,6 +10,7 @@ export const Home = () => {
 
 	return (
 		<>
+			<Slider />
 			<Container fluid>
 				<Row className="mt-5">
 					<Col sm={12}>

@@ -47,7 +47,7 @@ export const Navbars = () => {
 									<Form.Label>Usuario</Form.Label>
 									<Form.Control type="email" placeholder="Ingrese el usuario" />
 									<Form.Text className="text-muted">
-										Nunca compartiremos su información personal
+										Nunca compartiremos su información personal.
 									</Form.Text>
 								</Form.Group>
 								<Form.Group controlId="formBasicPassword">
@@ -57,6 +57,13 @@ export const Navbars = () => {
 								<Form.Group controlId="formBasicCheckbox">
 									{/* <Form.Check type="checkbox" label="Check me out" /> */}
 								</Form.Group>
+								<Link
+									className="btn btn-link float-left ml-1"
+									eventKey={2}
+									onClick={handleClose}
+									to="/verificar">
+									¿Ha olvidado su contraseña?
+								</Link>
 							</Form>
 						</Modal.Body>
 						<Modal.Footer>
@@ -71,9 +78,9 @@ export const Navbars = () => {
 						<button href="#deets" className="btn btn-outline-primary float-right" onClick={handleShow}>
 							Login
 						</button>
-						<button className="btn btn-outline-warning float-right ml-1" eventKey={2} href="#memes">
+						<Link className="btn btn-outline-info float-right ml-1" eventKey={2} to="/registro">
 							Register
-						</button>
+						</Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
