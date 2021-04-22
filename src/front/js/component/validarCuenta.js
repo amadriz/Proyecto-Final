@@ -12,7 +12,7 @@ export const ValidarCuenta = () => {
 						<Form>
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>Ingrese su dirección de correo electrónico</Form.Label>
-								<Form.Control type="email" placeholder="Ingrese email" />
+								<Form.Control type="email" placeholder="Ingrese email" id="email" />
 							</Form.Group>
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/recuperar">
 								Siguiente

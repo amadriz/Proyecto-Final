@@ -13,11 +13,15 @@ export const RecuperarKey = () => {
 						<Form>
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Nueva contraseña</Form.Label>
-								<Form.Control type="password" placeholder="Ingrese su nueva contraseña" />
+								<Form.Control
+									type="password"
+									placeholder="Ingrese su nueva contraseña"
+									id="password1"
+								/>
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Confirmar contraseña</Form.Label>
-								<Form.Control type="password" placeholder="Confirme su contraseña" />
+								<Form.Control type="password" placeholder="Confirme su contraseña" id="password2" />
 								<BsFillEyeFill />
 							</Form.Group>
 							<Form.Group controlId="formBasicCheckbox">
