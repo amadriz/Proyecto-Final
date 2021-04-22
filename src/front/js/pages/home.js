@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Container, Row, Col } from "react-bootstrap";
-import "../../styles/home.scss";
-import arteTipsCurri from "../../img/arteTipsCurri.png";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);

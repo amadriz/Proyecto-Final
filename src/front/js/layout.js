@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
@@ -27,11 +26,6 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/verificar">
-							<ValidarCuenta />
-						</Route>
-						<Route exact path="/recuperar">
-							<RecuperarKey />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
