@@ -4,6 +4,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../styles/home.scss";
 import arteTipsCurri from "../../img/arteTipsCurri.png";
+import { Slider } from "../component/slider";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
