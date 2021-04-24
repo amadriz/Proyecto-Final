@@ -10,15 +10,22 @@ export const ValidarCuenta = () => {
 			<Container className="mt-auto vs-container">
 				<Row className="mt-5">
 					<Col sm={12}>
-						<h1>Buscar cuenta de usuario</h1>
+						<h1>Recuperar su cuenta</h1>
+						<hr />
 						<Form>
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Ingrese su dirección de correo electrónico</Form.Label>
-								<Form.Control type="email" placeholder="Ingrese email" id="email" />
+								<Form.Label>
+									Ingrese su dirección de correo electrónico para buscar su cuenta
+								</Form.Label>
+								<Form.Control type="email" placeholder="Correo Electrónico" id="email" />
 							</Form.Group>
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/recuperar">
-								Siguiente
+								Buscar
 							</Link>
+							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
+								Cancelar
+							</Link>
+
 							{/*
 							<Button variant="primary" type="submit">
 								Siguiente

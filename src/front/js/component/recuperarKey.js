@@ -13,26 +13,26 @@ export const RecuperarKey = () => {
 				<Row className="mt-5">
 					<Col sm={12}>
 						<h1>Recupere su contraseña</h1>
+						<hr />
 						<Form>
 							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Nueva contraseña</Form.Label>
-								<Form.Control
-									type="password"
-									placeholder="Ingrese su nueva contraseña"
-									id="password1"
-								/>
+								<Form.Label>Ingrese su nueva contraseña</Form.Label>
+								<Form.Control type="password" placeholder="Nueva contraseña" id="password1" />
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Confirmar contraseña</Form.Label>
+								<Form.Label>Confirme su nueva contraseña</Form.Label>
 								<Form.Control type="password" placeholder="Confirme su contraseña" id="password2" />
 								<BsFillEyeFill />
 							</Form.Group>
 							<Form.Group controlId="formBasicCheckbox">
 								{/* <Form.Check type="checkbox" label="Check me out" /> */}
 							</Form.Group>
-							<Button variant="primary" type="submit">
+							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Enviar
-							</Button>
+							</Link>
+							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
+								Cancelar
+							</Link>
 						</Form>
 					</Col>
 				</Row>
