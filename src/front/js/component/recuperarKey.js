@@ -4,6 +4,9 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { BsFillEyeFill } from "react-icons/bs";
 
 export const RecuperarKey = () => {
+	let [password1, cambiarPassword1] = useState({ campo: "", valido: null });
+	let [password2, cambiarPassword2] = useState({ campo: "", valido: null });
+
 	return (
 		<>
 			<Container className="mt-auto vs-container">

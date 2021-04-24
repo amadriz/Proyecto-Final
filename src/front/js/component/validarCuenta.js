@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
+	let [email, cambiarEmail] = useState({ campo: "", valido: null });
+
 	return (
 		<>
 			<Container className="mt-auto vs-container">
