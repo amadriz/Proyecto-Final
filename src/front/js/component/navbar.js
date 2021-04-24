@@ -20,13 +20,13 @@ export const Navbars = () => {
 		// </nav>
 		<>
 			<Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top">
-				<Navbar.Brand href="#home">
+				<Navbar.Brand href="/">
 					<img src={logopeq} alt="logo" width="100" />
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="mr-auto">
-						<Nav.Link href="#features">Inicio</Nav.Link>
+						<Nav.Link href="/">Inicio</Nav.Link>
 						<Nav.Link href="#pricing">Empleos Disponibles</Nav.Link>
 						<NavDropdown title="Tips" id="collasible-nav-dropdown">
 							<NavDropdown.Item href="#action/3.1">Hoja de vida</NavDropdown.Item>
