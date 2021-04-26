@@ -3,7 +3,30 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
-	//let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	let [email, cambiarEmail] = useState({ campo: "", valido: null });
+
+	const expresiones = {
+		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+	};
+
+	//ejecuta una función cuando existe un cambio en el input
+	const onChange = e => {
+		console.log(e.target.value);
+		cambiarEmail({ ...email, campo: e.target.value });
+	};
+
+	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
+	const validar = () => {
+		if (expresiones.correo) {
+			if (expresiones.correo.test(email.campo)) {
+				console.log("Input correcto");
+				cambiarEmail({ ...email, valido: true });
+			} else {
+				console.log("Input incorrecto");
+				cambiarEmail({ ...email, valido: false });
+			}
+		}
+	};
 
 	return (
 		<>
@@ -17,9 +40,26 @@ export const ValidarCuenta = () => {
 								<Form.Label>
 									Ingrese su dirección de correo electrónico para buscar su cuenta
 								</Form.Label>
-								<Form.Control type="email" placeholder="Correo Electrónico" id="email" />
+								<Form.Control
+									type="email"
+									placeholder="Correo Electrónico"
+									id="email"
+									value={email.campo}
+									onChange={onChange}
+									onKeyUp={validar} //se activa cuando pulsa una tecla
+									onBlur={validar} // se activa cuando pulsa afuera del input
+									valido={email.valido}
+								/>
 							</Form.Group>
-							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/recuperar">
+
+							<Link
+								className={
+									email.valido === true
+										? "btn btn-outline-primary float-right ml-1"
+										: "btn btn-outline-secondary float-right ml-1"
+								}
+								eventKey={2}
+								to={email.valido === true ? "/recuperar" : "/"}>
 								Buscar
 							</Link>
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
