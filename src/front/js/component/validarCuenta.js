@@ -16,7 +16,7 @@ export const ValidarCuenta = () => {
 	};
 
 	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
-	const validar = () => {
+	const validarEmail = () => {
 		if (expresiones.correo) {
 			if (expresiones.correo.test(email.campo)) {
 				console.log("Input correcto");
@@ -46,8 +46,8 @@ export const ValidarCuenta = () => {
 									id="email"
 									value={email.campo}
 									onChange={onChange}
-									onKeyUp={validar} //se activa cuando pulsa una tecla
-									onBlur={validar} // se activa cuando pulsa afuera del input
+									onKeyUp={validarEmail} //se activa cuando pulsa una tecla
+									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
 							</Form.Group>
@@ -56,7 +56,7 @@ export const ValidarCuenta = () => {
 								className={
 									email.valido === true
 										? "btn btn-outline-primary float-right ml-1"
-										: "btn btn-outline-secondary float-right ml-1"
+										: "btn btn-outline-secondary disabled float-right ml-1"
 								}
 								eventKey={2}
 								to={email.valido === true ? "/recuperar" : "/"}>
