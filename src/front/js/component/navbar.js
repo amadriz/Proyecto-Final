@@ -78,8 +78,8 @@ export const Navbars = () => {
 						<button href="#deets" className="btn btn-outline-primary float-right" onClick={handleShow}>
 							Login
 						</button>
-						<Link className="btn btn-outline-info float-right ml-1" eventKey={2} to="/registro">
-							Register
+						<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/registro">
+							Registrarse
 						</Link>
 					</Nav>
 				</Navbar.Collapse>

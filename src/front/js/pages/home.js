@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Container, Row, Col } from "react-bootstrap";
-import "../../styles/home.scss";
+import { Slider } from "../component/slider";
+
 import arteTipsCurri from "../../img/arteTipsCurri.png";
 import { Slider } from "../component/slider";
 

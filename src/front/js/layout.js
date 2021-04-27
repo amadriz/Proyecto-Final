@@ -10,6 +10,7 @@ import { Navbars } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { RecuperarKey } from "./component/recuperarKey";
 import { ValidarCuenta } from "./component/validarCuenta";
+import { Registro } from "./component/registro";
 
 //create your first component
 const Layout = () => {
@@ -26,6 +27,9 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+						<Route exact path="/registro">
+							<Registro />
 						</Route>
 						<Route exact path="/verificar">
 							<ValidarCuenta />
