@@ -6,11 +6,13 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 import { Navbars } from "./component/navbar";
-import { Slider } from "./component/slider";
 import { Footer } from "./component/footer";
 import { SocialPage } from "./component/socialpage";
+import { RecuperarKey } from "./component/recuperarKey";
+import { ValidarCuenta } from "./component/validarCuenta";
+import { Registro } from "./component/registro";
+import { Slider } from "./component/slider";
 
 //create your first component
 const Layout = () => {
@@ -24,11 +26,19 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbars />
 					<Slider />
-
 					<Switch>
 						<Route exact path="/">
 							<Home />
 							<SocialPage />
+						</Route>
+						<Route exact path="/registro">
+							<Registro />
+						</Route>
+						<Route exact path="/verificar">
+							<ValidarCuenta />
+						</Route>
+						<Route exact path="/recuperar">
+							<RecuperarKey />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
