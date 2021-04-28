@@ -117,7 +117,7 @@ export const Registro = () => (
 							<Form.Control as="select" defaultValue="Eliga el Género" name="genero">
 								<option>Femenino</option>
 								<option>Masculino</option>
-								<option>Otro</option>
+								<option>Otros</option>
 							</Form.Control>
 						</Col>
 					</Form.Group>
