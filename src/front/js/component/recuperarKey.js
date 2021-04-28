@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { BsFillEyeFill } from "react-icons/bs";
+//import { BsFillEyeFill } from "react-icons/bs";
 
 export const RecuperarKey = () => {
 	return (
@@ -22,7 +22,7 @@ export const RecuperarKey = () => {
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Confirmar contraseña</Form.Label>
 								<Form.Control type="password" placeholder="Confirme su contraseña" id="password2" />
-								<BsFillEyeFill />
+								{/*<BsFillEyeFill /><BsFillEyeFill />*/}
 							</Form.Group>
 							<Form.Group controlId="formBasicCheckbox">
 								{/* <Form.Check type="checkbox" label="Check me out" /> */}
