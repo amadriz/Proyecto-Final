@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { BsFillEyeFill } from "react-icons/bs";
+//import { BsFillEyeFill } from "react-icons/bs";
 
 export const RecuperarKey = () => {
 	let [password1, cambiarPassword1] = useState({ campo: "", valido: null });
