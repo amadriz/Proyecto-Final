@@ -83,6 +83,9 @@ export const RecuperarKey = () => {
 									valido={password2.valido}
 								/>
 								{/*<BsFillEyeFill />*/}
+								<Form.Text className={password2.valido === true ? "text-light" : "alert-danger"}>
+									Las contraseñas no coinciden, vuelva a intentarlo
+								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="formBasicCheckbox">
 								{/* <Form.Check type="checkbox" label="Check me out" /> */}
