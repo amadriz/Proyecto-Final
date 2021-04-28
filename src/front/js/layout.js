@@ -25,7 +25,6 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbars />
-					<Slider />
 					<Switch>
 						<Route exact path="/">
 							<Home />
