@@ -105,7 +105,7 @@ export const Registro = () => (
 					<Form.Group className="row p-1" controlId="formGridPassword">
 						<Form.Label className="col-sm-12">Contraseña</Form.Label>
 						<Col className="col-sm-12">
-							<Form.Control placeholder="Costraseña" name="password" />
+							<Form.Control placeholder="Contraseña" name="password" />
 						</Col>
 					</Form.Group>
 				</Form.Row>

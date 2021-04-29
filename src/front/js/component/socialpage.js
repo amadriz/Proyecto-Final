@@ -101,7 +101,6 @@ export const SocialPage = () => {
 					</Card.Body>
 				</Card>
 			</div>
-			);
 		</>
 	);
 };
