@@ -4,8 +4,8 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 //import { BsFillEyeFill } from "react-icons/bs";
 
 export const RecuperarKey = () => {
-	let [password1, cambiarPassword1] = useState({ campo: "", valido: true });
-	let [password2, cambiarPassword2] = useState({ campo: "", valido: true });
+	let [password1, cambiarPassword1] = useState({ campo: "", valido: null });
+	let [password2, cambiarPassword2] = useState({ campo: "", valido: null });
 
 	const expresiones = {
 		contraseña: /^.{8,12}$/ // 4 a 12 digitos.
@@ -82,8 +82,8 @@ export const RecuperarKey = () => {
 									onKeyUp={validarPassword2}
 									valido={password2.valido}
 								/>
-								{/*<BsFillEyeFill />*/}
-								<Form.Text className={password2.valido === true ? "text-light" : "alert-danger"}>
+
+								<Form.Text className={password2.valido === false ? "alert-danger" : "text-light"}>
 									Las contraseñas no coinciden, vuelva a intentarlo
 								</Form.Text>
 							</Form.Group>

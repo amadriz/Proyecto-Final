@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
 
 export const Login = () => {
-	let [email, cambiarEmail] = useState({ campo: "", valido: true });
-	let [password, cambiarPassword] = useState({ campo: "", valido: true });
+	let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	let [password, cambiarPassword] = useState({ campo: "", valido: null });
 
 	const expresiones = {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -50,7 +50,7 @@ export const Login = () => {
 			<Container className="mt-auto vs-container">
 				<Row className="mt-5">
 					<Col sm={12}>
-						<h1>Ingresar a Empleo 45+</h1>
+						<h1>Ingrese a su perfil</h1>
 						<hr />
 						<Form>
 							<Form.Group controlId="formBasicEmail">
@@ -65,15 +65,15 @@ export const Login = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
-								<Form.Text className={email.valido === true ? "text-light" : "alert-danger"}>
+								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
 									Ingrese un correo electrónico válido
 								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Ingrese su nueva contraseña</Form.Label>
+								<Form.Label>Contraseña</Form.Label>
 								<Form.Control
 									type="password"
-									placeholder="Nueva contraseña"
+									placeholder="Ingrese su contraseña"
 									id="password1"
 									value={password.campo}
 									onChange={onChange2}
@@ -90,8 +90,8 @@ export const Login = () => {
 										: "btn btn-outline-secondary disabled float-right ml-1"
 								}
 								eventKey={2}
-								to={email.valido === true ? "/login" : "/"}>
-								Buscar
+								to={email.valido === true ? "/socialpage" : "/"}>
+								Ingresar
 							</Link>
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Cancelar

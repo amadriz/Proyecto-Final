@@ -29,7 +29,12 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
-							<SocialPage />
+						</Route>
+
+						<Route exact path="/socialpage">
+							<div className="mt-5">
+								<SocialPage />
+							</div>
 						</Route>
 						<Route exact path="/registro">
 							<Registro />

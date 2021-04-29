@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
-	let [email, cambiarEmail] = useState({ campo: "", valido: true });
+	let [email, cambiarEmail] = useState({ campo: "", valido: null });
 
 	const expresiones = {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
@@ -50,7 +50,7 @@ export const ValidarCuenta = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
-								<Form.Text className={email.valido === true ? "text-light" : "alert-danger"}>
+								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
 									Ingrese un correo electrónico válido
 								</Form.Text>
 							</Form.Group>

@@ -6,7 +6,7 @@ import useravatar from "../../img/rigo-baby.jpg";
 export const SocialPage = () => {
 	return (
 		<>
-			<div className="profile-card">
+			<div className="profile-card mt-5">
 				<Card
 					style={{
 						height: "35rem",

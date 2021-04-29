@@ -70,7 +70,14 @@ export const Navbars = () => {
 							<Button variant="secondary" onClick={handleClose}>
 								Cerrar
 							</Button>
-							<Button variant="primary">Ingresar</Button>
+							<Link
+								className="btn btn-outline-primary float-right ml-1"
+								eventKey={2}
+								to="/socialpage"
+								onClick={handleClose}>
+								Ingresar
+							</Link>
+							{/*<Button variant="primary">Ingresar</Button>*/}
 						</Modal.Footer>
 					</Modal>
 					{/* class ml-auto will turn elements to the right */}
