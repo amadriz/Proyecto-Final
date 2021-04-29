@@ -4,8 +4,8 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 //import { BsFillEyeFill } from "react-icons/bs";
 
 export const RecuperarKey = () => {
-	let [password1, cambiarPassword1] = useState({ campo: "", valido: null });
-	let [password2, cambiarPassword2] = useState({ campo: "", valido: null });
+	let [password1, cambiarPassword1] = useState({ campo: "", valido: true });
+	let [password2, cambiarPassword2] = useState({ campo: "", valido: true });
 
 	const expresiones = {
 		contraseña: /^.{8,12}$/ // 4 a 12 digitos.

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
-	let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	let [email, cambiarEmail] = useState({ campo: "", valido: true });
 
 	const expresiones = {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
