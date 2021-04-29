@@ -21,6 +21,7 @@ export const RecuperarKey = () => {
 		console.log(e.target.value);
 		cambiarPassword2({ ...password2, campo: e.target.value });
 	};
+
 	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
 	const validarContraseña = () => {
 		if (expresiones.contraseña) {
@@ -34,6 +35,9 @@ export const RecuperarKey = () => {
 		}
 	};
 
+	{
+		/* Función para Validar si ambas contraseñas son iguales*/
+	}
 	const validarPassword2 = () => {
 		if (password1.campo.length > 0) {
 			if (password1.campo !== password2.campo) {
@@ -58,6 +62,7 @@ export const RecuperarKey = () => {
 						<h1>Recupere su contraseña</h1>
 						<hr />
 						<Form>
+							{/* Formulario: Campo Nueva contraseña*/}
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Ingrese su nueva contraseña</Form.Label>
 								<Form.Control
@@ -72,6 +77,7 @@ export const RecuperarKey = () => {
 								/>
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
+								{/* Formulario: Campo Confirmar nueva contraseña*/}
 								<Form.Label>Confirme su nueva contraseña</Form.Label>
 								<Form.Control
 									type="password"
@@ -82,11 +88,12 @@ export const RecuperarKey = () => {
 									onKeyUp={validarPassword2}
 									valido={password2.valido}
 								/>
-
+								{/* Text de advertencia en caso de que las contraseñas no coincidan*/}
 								<Form.Text className={password2.valido === false ? "alert-danger" : "text-light"}>
 									Las contraseñas no coinciden, vuelva a intentarlo
 								</Form.Text>
 							</Form.Group>
+							{/* Permite routear al componente Login si se cumple los requesitos de la contraseña*/}
 							<Link
 								className={
 									password2.valido === true
@@ -97,7 +104,8 @@ export const RecuperarKey = () => {
 								to="/login">
 								Enviar
 							</Link>
-							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/login">
+							{/* Permite routear al Home en caso de cancelar el cambio de contraseña*/}
+							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Cancelar
 							</Link>
 						</Form>

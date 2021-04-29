@@ -37,6 +37,7 @@ export const ValidarCuenta = () => {
 						<hr />
 						<Form>
 							<Form.Group controlId="formBasicEmail">
+								{/* Formulario: Campo Email para buscar usuario*/}
 								<Form.Label>
 									Ingrese su dirección de correo electrónico para buscar su cuenta
 								</Form.Label>
@@ -50,11 +51,13 @@ export const ValidarCuenta = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
+								{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
 								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
 									Ingrese un correo electrónico válido
 								</Form.Text>
 							</Form.Group>
 
+							{/* Permite routear al componente recuperar*/}
 							<Link
 								className={
 									email.valido === true
@@ -65,6 +68,7 @@ export const ValidarCuenta = () => {
 								to={email.valido === true ? "/recuperar" : "/"}>
 								Buscar
 							</Link>
+							{/* Permite routear al Home en caso de cancelar la acción*/}
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Cancelar
 							</Link>
