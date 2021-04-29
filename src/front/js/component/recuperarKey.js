@@ -26,10 +26,10 @@ export const RecuperarKey = () => {
 		if (expresiones.contraseña) {
 			if (expresiones.contraseña.test(password1.campo)) {
 				console.log("Input correcto");
-				cambiarPassword1({ ...password1, valido: true });
+				cambiarPassword1({ ...password1, valido: false });
 			} else {
 				console.log("Input incorrecto");
-				cambiarPassword1({ ...password1, valido: false });
+				cambiarPassword1({ ...password1, valido: true });
 			}
 		}
 	};
@@ -87,9 +87,6 @@ export const RecuperarKey = () => {
 									Las contraseñas no coinciden, vuelva a intentarlo
 								</Form.Text>
 							</Form.Group>
-							<Form.Group controlId="formBasicCheckbox">
-								{/* <Form.Check type="checkbox" label="Check me out" /> */}
-							</Form.Group>
 							<Link
 								className={
 									password2.valido === true
@@ -97,10 +94,10 @@ export const RecuperarKey = () => {
 										: "btn btn-outline-secondary disabled float-right ml-1"
 								}
 								eventKey={2}
-								to="/">
+								to="/login">
 								Enviar
 							</Link>
-							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
+							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/login">
 								Cancelar
 							</Link>
 						</Form>
