@@ -18,11 +18,16 @@ export const Registro = () => {
 		//usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 		generico: /^[a-zA-ZÀ-ÿ\s]{1,30}$/, // Letras y espacios, pueden llevar acentos.
 		telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+		id: /^\d{9,20}$/, // 7 a 14 numeros.
 		contraseña: /^.{4,12}$/, // 4 a 12 digitos.
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 	};
 
 	//ejecuta una función cuando existe un cambio en el input
+	const onChangeID = e => {
+		console.log(e.target.value);
+		cambiarId({ ...id, campo: e.target.value });
+	};
 	const onChangeN = e => {
 		console.log(e.target.value);
 		cambiarNombre({ ...nombre, campo: e.target.value });
@@ -61,6 +66,19 @@ export const Registro = () => {
 	const onChangePass = e => {
 		console.log(e.target.value);
 		cambiarPassword1({ ...password1, campo: e.target.value });
+	};
+
+	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
+	const validarId = () => {
+		if (expresiones.id) {
+			if (expresiones.id.test(id.campo)) {
+				console.log("Input correcto");
+				cambiarId({ ...id, valido: true });
+			} else {
+				console.log("Input incorrecto");
+				cambiarId({ ...id, valido: false });
+			}
+		}
 	};
 
 	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
@@ -190,7 +208,15 @@ export const Registro = () => {
 						<Form.Group className="row p-1" controlId="formGridState">
 							<Form.Label className="col-sm-12">Número de identificación</Form.Label>
 							<Col className="col-sm-12">
-								<Form.Control placeholder="Número Identificación" name="numIdentificacion" />
+								<Form.Control
+									placeholder="Número Identificación"
+									name="numIdentificacion"
+									value={id.campo}
+									onChange={onChangeID}
+									onKeyUp={validarId} //se activa cuando pulsa una tecla
+									onBlur={validarId} // se activa cuando pulsa afuera del input
+									valido={id.valido}
+								/>
 							</Col>
 						</Form.Group>
 
@@ -219,10 +245,6 @@ export const Registro = () => {
 									valido={nombre.valido}
 								/>
 							</Col>
-
-							<Form.Text className={nombre.valido === false ? "alert-danger" : "text-light"}>
-								*Complete este campo*
-							</Form.Text>
 						</Form.Group>
 
 						<Form.Group className="row p-1" controlId="formGridState">
@@ -240,9 +262,6 @@ export const Registro = () => {
 									valido={apellido1.valido}
 								/>
 							</Col>
-							<Form.Text className={apellido1.valido === false ? "alert-danger" : "text-light"}>
-								*Complete este campo*
-							</Form.Text>
 						</Form.Group>
 
 						<Form.Group className="row p-1" controlId="formGridState">
@@ -299,10 +318,6 @@ export const Registro = () => {
 									valido={telefono.valido}
 								/>
 							</Col>
-
-							<Form.Text className={telefono.valido === false ? "alert-danger" : "text-light"}>
-								*Ingrese un número de teléfono válido*
-							</Form.Text>
 						</Form.Group>
 					</Form.Row>
 
@@ -378,9 +393,6 @@ export const Registro = () => {
 									valido={email.valido}
 								/>
 							</Col>
-							<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
-								*Ingrese un correo electrónico válido*
-							</Form.Text>
 						</Form.Group>
 
 						<Form.Group className="row p-1" controlId="formGridPassword">
@@ -396,19 +408,17 @@ export const Registro = () => {
 									valido={password1.valido}
 								/>
 							</Col>
-							<Form.Text className={password1.valido === false ? "alert-danger" : "text-light"}>
-								*Ingrese una contraseña válida*
-							</Form.Text>
 						</Form.Group>
 					</Form.Row>
 					{/* BOTONES */}
 					<Link
 						className={
-							nombre.valido === "false" &&
-							apellido1.valido === "false" &&
-							password1.valido === "false" &&
-							email.valido === "false" &&
-							telefono.valido === "false"
+							id.valido === true &&
+							nombre.valido === true &&
+							apellido1.valido === true &&
+							password1.valido === true &&
+							email.valido === true &&
+							telefono.valido === true
 								? "btn btn-outline-primary float-right ml-1"
 								: "btn btn-outline-secondary disabled float-right ml-1"
 						}
@@ -416,9 +426,28 @@ export const Registro = () => {
 						to="/login">
 						Registrarse
 					</Link>
+
 					<Link className="btn btn-outline-primary  float-right ml-1" eventKey={2} to="/">
 						Cancelar
 					</Link>
+					<Form.Text className={id.valido === false ? "text-danger" : "text-light"}>
+						*Ingrese un ID válido
+					</Form.Text>
+					<Form.Text className={nombre.valido === false ? "text-danger" : "text-light"}>
+						*Complete el campo de Nombre
+					</Form.Text>
+					<Form.Text className={apellido1.valido === false ? "text-danger" : "text-light"}>
+						*Complete el campo de Primer Apellido
+					</Form.Text>
+					<Form.Text className={telefono.valido === false ? "text-danger" : "text-light"}>
+						*Complete el campo de teléfono
+					</Form.Text>
+					<Form.Text className={email.valido === false ? "text-danger" : "text-light"}>
+						*Ingrese un correo electrónico válido
+					</Form.Text>
+					<Form.Text className={password1.valido === false ? "text-danger" : "text-light"}>
+						*Ingrese una contraseña válida
+					</Form.Text>
 				</Form>
 			</Row>
 		</Container>
