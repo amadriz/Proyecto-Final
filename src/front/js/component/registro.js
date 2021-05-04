@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Form, Group, Button, Text } from "react-bootstrap";
+import { Container, Row, Col, Form, Group, Button, Text, Alert } from "react-bootstrap";
 import misEstilos from "../../styles/misEstilos.css";
 
 export const Registro = () => {
-	let [id, cambiarId] = useState({ campo: "", valido: null });
+	let [id, cambiarId] = useState({ campo: "", valido: null }); //generico
 	let [nombre, cambiarNombre] = useState({ campo: "", valido: null }); //generico
 	let [apellido1, cambiarApellido1] = useState({ campo: "", valido: null }); //generico
 	let [apellido2, cambiarApellido2] = useState({ campo: "", valido: null }); //generico
@@ -18,16 +18,17 @@ export const Registro = () => {
 		//usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 		generico: /^[a-zA-ZÀ-ÿ\s]{1,30}$/, // Letras y espacios, pueden llevar acentos.
 		telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-		id: /^\d{9,20}$/, // 7 a 14 numeros.
-		contraseña: /^.{4,12}$/, // 4 a 12 digitos.
+		password: /^\d{4,12}$/, // 4 a 12 digitos.
+		id: /^\d{9,19}$/, // 4 a 12 digitos.
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 	};
 
 	//ejecuta una función cuando existe un cambio en el input
-	const onChangeID = e => {
+	const onChangeId = e => {
 		console.log(e.target.value);
 		cambiarId({ ...id, campo: e.target.value });
 	};
+
 	const onChangeN = e => {
 		console.log(e.target.value);
 		cambiarNombre({ ...nombre, campo: e.target.value });
@@ -174,8 +175,8 @@ export const Registro = () => {
 
 	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
 	const validarContraseña = () => {
-		if (expresiones.contraseña) {
-			if (expresiones.contraseña.test(password1.campo)) {
+		if (expresiones.password) {
+			if (expresiones.password.test(password1.campo)) {
 				console.log("Input correcto");
 				cambiarPassword1({ ...password1, valido: false });
 			} else {
@@ -210,9 +211,9 @@ export const Registro = () => {
 							<Col className="col-sm-12">
 								<Form.Control
 									placeholder="Número Identificación"
-									name="numIdentificacion"
+									name="Identificacion"
 									value={id.campo}
-									onChange={onChangeID}
+									onChange={onChangeId}
 									onKeyUp={validarId} //se activa cuando pulsa una tecla
 									onBlur={validarId} // se activa cuando pulsa afuera del input
 									valido={id.valido}
@@ -410,10 +411,29 @@ export const Registro = () => {
 							</Col>
 						</Form.Group>
 					</Form.Row>
+					{/* ALERTAS*/}
+					<Alert className={id.valido === false ? "alert-danger" : "ocultar"}>
+						Complete el campo de <strong>identificación</strong>
+					</Alert>
+					<Alert className={nombre.valido === false ? "alert-danger" : "ocultar"}>
+						Complete el campo de <strong>Nombre</strong>
+					</Alert>
+					<Alert className={apellido1.valido === false ? "alert-danger" : "ocultar"}>
+						Complete el campo de <strong>Primer Apellido</strong>
+					</Alert>
+					<Alert className={telefono.valido === false ? "alert-danger" : "ocultar"}>
+						Complete el campo de <strong>teléfono</strong>
+					</Alert>
+					<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
+						Complete el campo de <strong>correo electrónico</strong>
+					</Alert>
+					<Alert className={password1.valido === false ? "alert-danger" : "ocultar"}>
+						Complete el campo de <strong>contraseña</strong>
+					</Alert>
 					{/* BOTONES */}
 					<Link
 						className={
-							id.valido === true &&
+							password1.valido === true &&
 							nombre.valido === true &&
 							apellido1.valido === true &&
 							password1.valido === true &&
@@ -430,24 +450,6 @@ export const Registro = () => {
 					<Link className="btn btn-outline-primary  float-right ml-1" eventKey={2} to="/">
 						Cancelar
 					</Link>
-					<Form.Text className={id.valido === false ? "text-danger" : "text-light"}>
-						*Ingrese un ID válido
-					</Form.Text>
-					<Form.Text className={nombre.valido === false ? "text-danger" : "text-light"}>
-						*Complete el campo de Nombre
-					</Form.Text>
-					<Form.Text className={apellido1.valido === false ? "text-danger" : "text-light"}>
-						*Complete el campo de Primer Apellido
-					</Form.Text>
-					<Form.Text className={telefono.valido === false ? "text-danger" : "text-light"}>
-						*Complete el campo de teléfono
-					</Form.Text>
-					<Form.Text className={email.valido === false ? "text-danger" : "text-light"}>
-						*Ingrese un correo electrónico válido
-					</Form.Text>
-					<Form.Text className={password1.valido === false ? "text-danger" : "text-light"}>
-						*Ingrese una contraseña válida
-					</Form.Text>
 				</Form>
 			</Row>
 		</Container>

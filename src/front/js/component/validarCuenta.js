@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
 	let [email, cambiarEmail] = useState({ campo: "", valido: null });
@@ -52,9 +52,12 @@ export const ValidarCuenta = () => {
 									valido={email.valido}
 								/>
 								{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
-								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
-									Ingrese un correo electrónico válido
-								</Form.Text>
+								<Alert className={email.valido === false ? "mostrar alert-danger" : "ocultar"}>
+									<button className="close">
+										<span>&times;</span>
+									</button>
+									<strong>¡Error! </strong> Ingrese un correo electrónico válido
+								</Alert>
 							</Form.Group>
 
 							{/* Permite routear al componente recuperar*/}
