@@ -39,7 +39,7 @@ export const ValidarCuenta = () => {
 							<Form.Group controlId="formBasicEmail">
 								{/* Formulario: Campo Email para buscar usuario*/}
 								<Form.Label>
-									Ingrese su dirección de correo electrónico para buscar su cuenta
+									Ingrese su dirección de correo electrónico para buscar su cuenta.
 								</Form.Label>
 								<Form.Control
 									type="email"
@@ -56,7 +56,7 @@ export const ValidarCuenta = () => {
 									<button className="close">
 										<span>&times;</span>
 									</button>
-									<strong>¡Error! </strong> Ingrese un correo electrónico válido
+									<strong>¡Error! </strong> Ingrese un correo electrónico válido.
 								</Alert>
 							</Form.Group>
 

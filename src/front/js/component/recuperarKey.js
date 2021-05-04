@@ -97,7 +97,7 @@ export const RecuperarKey = () => {
 										<span>&times;</span>
 									</button>
 									<strong>¡Contraseñas incorrectas!</strong>, ingrese información válida para
-									continuar
+									continuar.
 								</Alert>
 								{/* Text de advertencia en caso de que las contraseñas no coincidan*/}
 								<Form.Text className={password2.valido === false ? "alert-success" : ""}>

@@ -413,22 +413,22 @@ export const Registro = () => {
 					</Form.Row>
 					{/* ALERTAS*/}
 					<Alert className={id.valido === false ? "alert-danger" : "ocultar"}>
-						Complete el campo de <strong>identificación</strong>
+						Complete el campo de <strong>identificación.</strong>
 					</Alert>
 					<Alert className={nombre.valido === false ? "alert-danger" : "ocultar"}>
-						Complete el campo de <strong>Nombre</strong>
+						Complete el campo de <strong>Nombre.</strong>
 					</Alert>
 					<Alert className={apellido1.valido === false ? "alert-danger" : "ocultar"}>
-						Complete el campo de <strong>Primer Apellido</strong>
+						Complete el campo de <strong>Primer Apellido.</strong>
 					</Alert>
 					<Alert className={telefono.valido === false ? "alert-danger" : "ocultar"}>
-						Complete el campo de <strong>teléfono</strong>
+						Complete el campo de <strong>teléfono.</strong>
 					</Alert>
 					<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
-						Complete el campo de <strong>correo electrónico</strong>
+						Complete el campo de <strong>correo electrónico.</strong>
 					</Alert>
 					<Alert className={password1.valido === false ? "alert-danger" : "ocultar"}>
-						Complete el campo de <strong>contraseña</strong>
+						Complete el campo de <strong>contraseña.</strong>
 					</Alert>
 					{/* BOTONES */}
 					<Link
