@@ -57,12 +57,11 @@ export const Navbars = () => {
 								<Form.Group controlId="formBasicCheckbox">
 									{/* <Form.Check type="checkbox" label="Check me out" /> */}
 								</Form.Group>
-								<Link
-									className="btn btn-link float-left ml-1"
-									eventKey={2}
-									onClick={handleClose}
-									to="/verificar">
+								<Link className="btn btn-link" eventKey={2} onClick={handleClose} to="/verificar">
 									¿Ha olvidado su contraseña?
+								</Link>
+								<Link className="btn btn-link" eventKey={2} onClick={handleClose} to="/registro">
+									¿No tienes cuenta? Regístrese aquí
 								</Link>
 							</Form>
 						</Modal.Body>
