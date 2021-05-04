@@ -36,12 +36,13 @@ export const ValidarCuenta = () => {
 						<h1>Recuperar su cuenta</h1>
 						<hr />
 						<Form>
-							<Form.Group controlId="formBasicEmail">
+							<Form.Group className="" controlId="formBasicEmail">
 								{/* Formulario: Campo Email para buscar usuario*/}
 								<Form.Label>
 									Ingrese su dirección de correo electrónico para buscar su cuenta.
 								</Form.Label>
 								<Form.Control
+									className="btnEmail"
 									type="email"
 									placeholder="Correo Electrónico"
 									id="email"

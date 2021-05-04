@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
 
 export const Login = () => {
 	let [email, cambiarEmail] = useState({ campo: "", valido: null });
@@ -67,10 +67,6 @@ export const Login = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
-								{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
-								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
-									Ingrese un correo electrónico válido
-								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
 								{/* Formulario: Campo contraseña*/}
@@ -86,6 +82,10 @@ export const Login = () => {
 									valido={password.valido}
 								/>
 							</Form.Group>
+							{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
+							<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
+								Ingrese un correo electrónico válido
+							</Alert>
 							{/* Permite routear al componente SocialPage si se cumple los requesitos de acceso*/}
 							<Link
 								className={
