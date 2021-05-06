@@ -21,7 +21,7 @@ class user(db.Model):
 
 class registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    identificacion = db.Column(db.Integer, primary_key=True)
+    identificacion = db.Column(db.Integer, unique=True, nullable=False)
     tipo_id = db.Column(db.String(120), unique=True, nullable=True)
     nombre = db.Column(db.String(120), unique=True, nullable=False)
     apellido1 = db.Column(db.String(120), unique=True, nullable=False)
@@ -42,7 +42,8 @@ class registro(db.Model):
     def serialize(self):
        return {
             "id": self.id,
-            "tipo_id":self.nombre,
+            "identificacion":self.identificacion,
+            "tipo_id":self.tipo_id,
             "nombre": self.nombre,
             "apellido1": self.apellido1,
             "apellido2": self.apellido2,
