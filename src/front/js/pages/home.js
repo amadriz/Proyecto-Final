@@ -15,7 +15,7 @@ export const Home = () => {
 				<Row className="mt-5">
 					<Col sm={12}>
 						<h1 className="text-center text-uppercase" data-aos="zoom-in">
-							¿Como hacer un curriculum?
+							¿Cómo hacer un curriculum?
 						</h1>
 					</Col>
 				</Row>

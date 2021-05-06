@@ -1,15 +1,157 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Label, Text, Alert, Input } from "react-bootstrap";
 
 export const Login = () => {
-	let [email, cambiarEmail] = useState({ campo: "", valido: null });
-	let [password, cambiarPassword] = useState({ campo: "", valido: null });
+	//let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	//let [password, cambiarPassword] = useState({ campo: "", valido: null });
+
+	let [email, cambiarEmail] = useState("");
+	let [password, cambiarPassword] = useState("");
 
 	const expresiones = {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 		contraseña: /^.{8,12}$/
 	};
+
+	const handleClick = () => {
+		const opts = {
+			method: "POST",
+			body: JSON.stringify({
+				email: email,
+				password: password
+			})
+		};
+
+		fetch("https://3001-purple-bear-vtpt4t9n.ws-us03.gitpod.io/api/token", opts)
+			.then(resp => {
+				if (resp.status === 200) return resp.json();
+				else alert("There has been some error");
+			})
+			.then()
+			.catch(error => {
+				console.error("There was an ERROR!!!!", error);
+			});
+	};
+
+	return (
+		<>
+			<Container className="mt-auto vs-container">
+				<Row className="mt-5">
+					<Col sm={12}>
+						<h1>Ingrese a su perfil</h1>
+						<hr />
+
+						<div>
+							<input
+								type="text"
+								placeholder="email"
+								value={email}
+								onChange={e => cambiarEmail(e.target.value)}></input>
+							<input
+								type="text"
+								placeholder="clave"
+								value={password}
+								onChange={e => cambiarPassword(e.target.value)}></input>
+							<button className="btn btn-primary" onClick={handleClick}>
+								LOGIN-PRUEBA
+							</button>
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		</>
+	);
+};
+
+{
+	/* 
+
+
+		<Form>
+							<Form.Group controlId="formBasicEmail">
+								{/* Formulario: Campo Email para buscar usuario*/
+}
+//<Form.Label>Usuario</Form.Label>
+//<Form.Control
+//	type="email"
+//	placeholder="Ingrese su correo electrónico"
+//	id="email"
+//	value={email.campo}
+//	onChange={onChange}
+//onKeyUp={validarEmail} //se activa cuando pulsa una tecla
+//onBlur={validarEmail} // se activa cuando pulsa afuera del input
+//valido={email.valido}
+///>
+//	</Form.Group>
+//<Form.Group controlId="formBasicPassword">
+{
+	/* Formulario: Campo contraseña*/
+}
+//		<Form.Label>Contraseña</Form.Label>
+//		<Form.Control
+//			type="password"
+//			placeholder="Ingrese su contraseña"
+//			id="password1"
+//			value={password.campo}
+//			onChange={onChange2}
+//onKeyUp={validarContraseña} //se activa cuando pulsa una tecla
+//onBlur={validarContraseña} // se activa cuando pulsa afuera del input
+//valido={password.valido}
+//		/>
+//	</Form.Group>
+{
+	/* Text de advertencia en caso que muestra al validar la exxpresión de email*/
+}
+//	<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
+//		Ingrese un correo electrónico válido
+//	</Alert>
+
+//	<button className="btn btn-primary" onClick={handleClick}>
+//		LOGIN-PRUEBA
+//	</button>
+
+{
+	/* Permite routear al componente SocialPage si se cumple los requesitos de acceso
+							<Link
+								className={
+									email.valido === true
+										? "btn btn-outline-primary float-right ml-1"
+										: "btn btn-outline-secondary disabled float-right ml-1"
+									
+								}
+								eventKey={2}
+								onClick={handleClick}
+								to={email.valido === true ? "/socialpage" : "/"}
+							>
+								Ingresar
+							</Link>
+
+							 Permite routear al Home en caso de cancelar la acción
+							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
+								Cancelar
+                            </Link>
+                            */
+}
+
+{
+	/*
+                            <Link to="/">
+				                    <button className="btn btn-primary">Back home</button>
+			                </Link>
+                            */
+}
+{
+	/*
+							<Button variant="primary" type="submit">
+								Siguiente
+							</Button>*/
+}
+//	</Form>
+
+{
+	/* 
+
 
 	//ejecuta una función cuando existe un cambio en el input
 	const onChange = e => {
@@ -46,71 +188,9 @@ export const Login = () => {
 			}
 		}
 	};
-	return (
-		<>
-			<Container className="mt-auto vs-container">
-				<Row className="mt-5">
-					<Col sm={12}>
-						<h1>Ingrese a su perfil</h1>
-						<hr />
-						<Form>
-							<Form.Group controlId="formBasicEmail">
-								{/* Formulario: Campo Email para buscar usuario*/}
-								<Form.Label>Usuario</Form.Label>
-								<Form.Control
-									type="email"
-									placeholder="Ingrese su correo electrónico"
-									id="email"
-									value={email.campo}
-									onChange={onChange}
-									onKeyUp={validarEmail} //se activa cuando pulsa una tecla
-									onBlur={validarEmail} // se activa cuando pulsa afuera del input
-									valido={email.valido}
-								/>
-							</Form.Group>
-							<Form.Group controlId="formBasicPassword">
-								{/* Formulario: Campo contraseña*/}
-								<Form.Label>Contraseña</Form.Label>
-								<Form.Control
-									type="password"
-									placeholder="Ingrese su contraseña"
-									id="password1"
-									value={password.campo}
-									onChange={onChange2}
-									onKeyUp={validarContraseña} //se activa cuando pulsa una tecla
-									onBlur={validarContraseña} // se activa cuando pulsa afuera del input
-									valido={password.valido}
-								/>
-							</Form.Group>
-							{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
-							<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
-								Ingrese un correo electrónico válido
-							</Alert>
-							{/* Permite routear al componente SocialPage si se cumple los requesitos de acceso*/}
-							<Link
-								className={
-									email.valido === true
-										? "btn btn-outline-primary float-right ml-1"
-										: "btn btn-outline-secondary disabled float-right ml-1"
-								}
-								eventKey={2}
-								to={email.valido === true ? "/socialpage" : "/"}>
-								Ingresar
-							</Link>
 
-							{/* Permite routear al Home en caso de cancelar la acción*/}
-							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
-								Cancelar
-							</Link>
 
-							{/*
-							<Button variant="primary" type="submit">
-								Siguiente
-							</Button>*/}
-						</Form>
-					</Col>
-				</Row>
-			</Container>
-		</>
-	);
-};
+
+
+*/
+}

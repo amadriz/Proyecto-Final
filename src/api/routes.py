@@ -16,6 +16,8 @@ from flask_jwt_extended import jwt_required
 # -Karla- Create flask app
 api = Blueprint('api', __name__)
 
+
+# -Karla- Fin
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -29,15 +31,15 @@ def handle_hello():
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
 
-#@app.route("/token", methods=["POST"])
-#def create_token():
-#    email = request.json.get("email", None)
-#    password = request.json.get("password", None)
-#    if email != "test" or password != "test":
-#        return jsonify({"msg": "Bad email or password"}), 401
+@api.route("/token", methods=["POST"])
+def create_token():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    if email != "prueba@gmail.com" or password != "prueba":
+        return jsonify({"msg": "Bad email or password"}), 401
 
-#    access_token = create_access_token(identity=email)
-#    return jsonify(access_token=access_token)
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
 
 
 
