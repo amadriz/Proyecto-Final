@@ -27,7 +27,7 @@ export const Navbars = () => {
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="mr-auto">
 						<Nav.Link href="/">Inicio</Nav.Link>
-						<Nav.Link href="#pricing">Empleos Disponibles</Nav.Link>
+						<Nav.Link href="/listaempleos">Empleos Disponibles</Nav.Link>
 						<NavDropdown title="Tips" id="collasible-nav-dropdown">
 							<NavDropdown.Item href="#action/3.1">Hoja de vida</NavDropdown.Item>
 							<NavDropdown.Item href="#action/3.2">Entrevista</NavDropdown.Item>

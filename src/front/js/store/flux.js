@@ -1,47 +1,30 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			listaEmpleos: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			fetchEmpleos: async () => {
+				const URL = "https://jooble.org/api/dec6c08a-f66d-4594-a149-7c4502acb21c";
+				// const URL = "https://swapi.dev/api/people/";
+				// const URL = "https://jobs.github.com/positions.json";
+				const CONFIG = {
+					method: "POST",
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: '{ "keywords": "it", "location": "Costa Rica" }'
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				console.log("***DATA***", json);
+				setStore({ listaEmpleos: json.jobs });
 			}
+			// setFavorites: name => {
+			// 	const store = getStore();
+			// 	setStore({ favorites: [...store.favorites, name] });
+			// }
 		}
 	};
 };
