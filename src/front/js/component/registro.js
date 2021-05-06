@@ -77,13 +77,13 @@ export const Registro = () => (
 					<Form.Group className="row p-1" controlId="formGridState">
 						<Form.Label className="col-sm-12">Cantón</Form.Label>
 						<Col className="col-sm-12">
-							<Form.Control placeholder="Sleccione Cantón" name="canton"></Form.Control>
+							<Form.Control placeholder="Ingrese Cantón" name="canton"></Form.Control>
 						</Col>
 					</Form.Group>
 					<Form.Group className="row p-1" controlId="formGridZip">
 						<Form.Label className="col-sm-12">Distrito</Form.Label>
 						<Col className="col-sm-12">
-							<Form.Control placeholder="Sleccione Distrito" name="distrito"></Form.Control>
+							<Form.Control placeholder="Ingrese Distrito" name="distrito"></Form.Control>
 						</Col>
 					</Form.Group>
 				</Form.Row>
