@@ -16,7 +16,6 @@ import { Slider } from "./component/slider";
 import { ListaEmpleos } from "./component/listaEmpleos";
 import { Login } from "./component/login";
 
-
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -32,7 +31,6 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-
 						<Route exact path="/socialpage">
 							<div className="mt-5">
 								<SocialPage />
@@ -49,14 +47,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/listaempleos">
 							<ListaEmpleos />
+						</Route>
 						<Route exact path="/login">
 							<Login />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
