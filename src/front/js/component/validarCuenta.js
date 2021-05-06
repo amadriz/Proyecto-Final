@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
 	let [email, cambiarEmail] = useState({ campo: "", valido: null });
@@ -36,11 +36,13 @@ export const ValidarCuenta = () => {
 						<h1>Recuperar su cuenta</h1>
 						<hr />
 						<Form>
-							<Form.Group controlId="formBasicEmail">
+							<Form.Group className="" controlId="formBasicEmail">
+								{/* Formulario: Campo Email para buscar usuario*/}
 								<Form.Label>
-									Ingrese su dirección de correo electrónico para buscar su cuenta
+									Ingrese su dirección de correo electrónico para buscar su cuenta.
 								</Form.Label>
 								<Form.Control
+									className="btnEmail"
 									type="email"
 									placeholder="Correo Electrónico"
 									id="email"
@@ -50,11 +52,16 @@ export const ValidarCuenta = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
-								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
-									Ingrese un correo electrónico válido
-								</Form.Text>
+								{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
+								<Alert className={email.valido === false ? "mostrar alert-danger" : "ocultar"}>
+									<button className="close">
+										<span>&times;</span>
+									</button>
+									<strong>¡Error! </strong> Ingrese un correo electrónico válido.
+								</Alert>
 							</Form.Group>
 
+							{/* Permite routear al componente recuperar*/}
 							<Link
 								className={
 									email.valido === true
@@ -65,6 +72,7 @@ export const ValidarCuenta = () => {
 								to={email.valido === true ? "/recuperar" : "/"}>
 								Buscar
 							</Link>
+							{/* Permite routear al Home en caso de cancelar la acción*/}
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Cancelar
 							</Link>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Label, Text } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
 
 export const Login = () => {
 	let [email, cambiarEmail] = useState({ campo: "", valido: null });
@@ -34,6 +34,7 @@ export const Login = () => {
 		}
 	};
 
+	// ejecuta una función cuando existe un cambio en una tecla o dar un click fuera del input
 	const validarContraseña = () => {
 		if (expresiones.contraseña) {
 			if (expresiones.contraseña.test(password.campo)) {
@@ -54,6 +55,7 @@ export const Login = () => {
 						<hr />
 						<Form>
 							<Form.Group controlId="formBasicEmail">
+								{/* Formulario: Campo Email para buscar usuario*/}
 								<Form.Label>Usuario</Form.Label>
 								<Form.Control
 									type="email"
@@ -65,11 +67,9 @@ export const Login = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
-								<Form.Text className={email.valido === false ? "alert-danger" : "text-light"}>
-									Ingrese un correo electrónico válido
-								</Form.Text>
 							</Form.Group>
 							<Form.Group controlId="formBasicPassword">
+								{/* Formulario: Campo contraseña*/}
 								<Form.Label>Contraseña</Form.Label>
 								<Form.Control
 									type="password"
@@ -82,7 +82,11 @@ export const Login = () => {
 									valido={password.valido}
 								/>
 							</Form.Group>
-
+							{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
+							<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
+								Ingrese un correo electrónico válido
+							</Alert>
+							{/* Permite routear al componente SocialPage si se cumple los requesitos de acceso*/}
 							<Link
 								className={
 									email.valido === true
@@ -93,6 +97,8 @@ export const Login = () => {
 								to={email.valido === true ? "/socialpage" : "/"}>
 								Ingresar
 							</Link>
+
+							{/* Permite routear al Home en caso de cancelar la acción*/}
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Cancelar
 							</Link>

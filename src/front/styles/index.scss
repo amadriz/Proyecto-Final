@@ -11,15 +11,31 @@ margin-right: 0;
 }
 */
 
+body{
+    background-color: #f2f2f2;
+}
+
 @media screen and (min-width: 570px) {
+
 .vs-container{
-  border-radius: 5px;
-  background-color: #f2f2f2;
+  border-radius: 15px;
+  background-color: white;
   padding: 20px;
   width: 590px;
   padding-top: 0%;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.79) ;
+
 }
+
+.btnEmail{
+    width: 550px;
+    height: 50px;
+    font-size: large;
+   
 }
+
+}
+
 
 /*
 .vs-container{
@@ -44,5 +60,26 @@ margin-right: 0;
 .vs-container button{
     float: right;
     text-align: center;
+}
+
+.regis-style h2{
+    font-weight: bolder;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.regis-style h3{
+    padding-top: 30px;
+    padding-bottom: 10px;
+
+}
+
+.ocultar{
+    
+    display: none;
+}
+
+.mostrar{
+    margin-top: 20px;
 }
 
