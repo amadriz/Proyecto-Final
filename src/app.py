@@ -11,7 +11,7 @@ from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from flask_jwt_extended import JWTManager
-
+from api.models import db, user, registro
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
@@ -65,5 +65,5 @@ def serve_any_other_file(path):
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 3001))
+    PORT = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=PORT, debug=True)
