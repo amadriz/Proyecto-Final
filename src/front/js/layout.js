@@ -13,7 +13,9 @@ import { RecuperarKey } from "./component/recuperarKey";
 import { ValidarCuenta } from "./component/validarCuenta";
 import { Registro } from "./component/registro";
 import { Slider } from "./component/slider";
+import { ListaEmpleos } from "./component/listaEmpleos";
 import { Login } from "./component/login";
+
 
 //create your first component
 const Layout = () => {
@@ -45,11 +47,16 @@ const Layout = () => {
 						<Route exact path="/recuperar">
 							<RecuperarKey />
 						</Route>
+						<Route exact path="/listaempleos">
+							<ListaEmpleos />
 						<Route exact path="/login">
 							<Login />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/single/:theid">
+							<Single />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
