@@ -19,7 +19,6 @@ class User(db.Model):
         }
 
 
-
 class RegistroPersona(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     identificacion = db.Column(db.Integer, primary_key=True)
