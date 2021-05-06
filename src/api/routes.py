@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 # -Karla- se importa OS
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, user, registro
 #, RegistroPersona
 from api.utils import generate_sitemap, APIException
 
@@ -15,6 +15,16 @@ from flask_jwt_extended import jwt_required
 
 # -Karla- Create flask app
 api = Blueprint('api', __name__)
+
+@api.route('/hello', methods=['POST', 'GET'])
+def handle_hello():
+
+    response_body = {
+        "message": "Hello! I'm a message that came from the backend"
+    }
+
+    return jsonify(response_body), 200
+
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
@@ -31,12 +41,4 @@ api = Blueprint('api', __name__)
 
 
 
-#@api.route('/hello', methods=['POST', 'GET'])
-#def handle_hello():
-
-#    response_body = {
-#        "message": "Hello! I'm a message that came from the backend"
-#    }
-
-#    return jsonify(response_body), 200
 
