@@ -38,13 +38,30 @@ export const Navbars = () => {
 							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
+					{!store.token ? (
+						<Link to="/login">
+							<Button variant="btn btn-outline-primary float-right ml-1">Iniciar sesión</Button>
+						</Link>
+					) : (
+						<Button variant="btn btn-outline-primary float-right ml-1" onClick={() => actions.logout()}>
+							Cerrar sesión
+						</Button>
+					)}
+				</Navbar.Collapse>
+			</Navbar>
+		</>
+	);
+};
+
+{
+	/* 
 
 					<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 						<Modal.Header closeButton>
 							<Modal.Title>Ingresar</Modal.Title>
 						</Modal.Header>
 						<Modal.Body>
-							{/* Formulario de login */}
+						
 							<Form>
 								<Form.Group controlId="formBasicEmail">
 									<Form.Label>Usuario</Form.Label>
@@ -58,7 +75,7 @@ export const Navbars = () => {
 									<Form.Control type="password" placeholder="Ingrese su contraseña" />
 								</Form.Group>
 								<Form.Group controlId="formBasicCheckbox">
-									{/* <Form.Check type="checkbox" label="Check me out" /> */}
+								
 								</Form.Group>
 								<Link className="btn btn-link" eventKey={2} onClick={handleClose} to="/verificar">
 									¿Ha olvidado su contraseña?
@@ -79,7 +96,7 @@ export const Navbars = () => {
 								onClick={handleClose}>
 								Ingresar
 							</Link>
-							{/*<Button variant="primary">Ingresar</Button>*/}
+						
 						</Modal.Footer>
 					</Modal>
 					{!store.token ? (
@@ -96,8 +113,7 @@ export const Navbars = () => {
 							Cerrar sesión
 						</Button>
 					)}
-				</Navbar.Collapse>
-			</Navbar>
-		</>
-	);
-};
+
+
+*/
+}

@@ -71,7 +71,8 @@ export const Login = () => {
 									placeholder="clave"
 									value={password}
 									onChange={e => cambiarPassword(e.target.value)}></input>
-								<button className="btn btn-primary" onClick={handleClick}>
+								{/*<button className="btn btn-primary" onClick={handleClick}>*/}
+								<button className="btn btn-primary" onClick={() => actions.login()}>
 									LOGIN-PRUEBA
 								</button>
 							</div>

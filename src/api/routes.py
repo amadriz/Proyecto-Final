@@ -19,6 +19,7 @@ api = Blueprint('api', __name__)
 
 # -Karla- Fin
 @api.route('/hello', methods=['POST', 'GET'])
+@jwt_required
 def handle_hello():
 
     response_body = {
@@ -35,7 +36,7 @@ def handle_hello():
 def create_token():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    if email != "prueba@gmail.com" or password != "prueba":
+    if email != "test@gmail.com" or password != "test":
         return jsonify({"msg": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=email)
