@@ -48,7 +48,7 @@ def create_token():
     print(user_current.password)
     if user_current is None:
         return jsonify({"msg": "Incorrect username"}), 401
-    if str(user_current.password) != str(password):
+    if user_current.password != password:
         return jsonify({"msg": "Incorrect password"}), 401
 
     access_token = create_access_token(identity=email)
