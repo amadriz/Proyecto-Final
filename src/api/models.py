@@ -34,6 +34,8 @@ class registro(db.Model):
     canton = db.Column(db.String(120), unique=False, nullable=True)
     distrito = db.Column(db.String(120), unique=False, nullable=True)
     dir_exacta = db.Column(db.String(120), unique=False, nullable=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
 
 
     def __repr__(self):
@@ -55,6 +57,7 @@ class registro(db.Model):
             "canton":self.canton,
             "distrito":self.distrito,
             "dir_exacta":self.dir_exacta,
+            "email": self.email,
             # do not serialize the password, its a security breach
         }
     

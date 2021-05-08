@@ -72,7 +72,7 @@ export const Login = () => {
 									value={password}
 									onChange={e => cambiarPassword(e.target.value)}></input>
 								{/*<button className="btn btn-primary" onClick={handleClick}>*/}
-								<button className="btn btn-primary" onClick={() => actions.login()}>
+								<button className="btn btn-primary" onClick={() => handleClick()}>
 									LOGIN-PRUEBA
 								</button>
 							</div>
