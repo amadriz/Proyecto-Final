@@ -38,14 +38,20 @@ export const Navbars = () => {
 							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
+
 					{!store.token ? (
 						<Link to="/login">
 							<Button variant="btn btn-outline-primary float-right ml-1">Iniciar sesión</Button>
 						</Link>
 					) : (
-						<Button variant="btn btn-outline-primary float-right ml-1" onClick={() => actions.logout()}>
-							Cerrar sesión
-						</Button>
+						<Nav className="ml-auto">
+							<Link to="/socialpage">
+								<Button variant="btn btn-outline-primary float-right ml-1">Perfil</Button>
+							</Link>
+							<Button variant="btn btn-outline-primary float-right ml-1" onClick={() => actions.logout()}>
+								Cerrar sesión
+							</Button>
+						</Nav>
 					)}
 				</Navbar.Collapse>
 			</Navbar>
@@ -55,6 +61,26 @@ export const Navbars = () => {
 
 {
 	/* 
+    
+
+    		{!store.token ? (
+						<Link to="/login">
+							<Button variant="btn btn-outline-primary float-right ml-1">Iniciar sesión</Button>
+						</Link>
+					) : (
+                        
+                        (
+							<Button variant="btn btn-outline-primary float-right ml-1" onClick={() => actions.logout()}>
+								Cerrar sesión
+							</Button>
+						) && (
+							<Link to="/socialpage">
+								<Button variant="btn btn-outline-primary float-right ml-1">Perfil</Button>
+							</Link>
+						)
+					)}
+
+    -------
 
 					<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 						<Modal.Header closeButton>
