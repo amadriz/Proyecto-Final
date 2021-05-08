@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 # -Karla- se importa OS
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, user, registro
+from api.models import db, User, registro
 #, RegistroPersona
 from api.utils import generate_sitemap, APIException
 
@@ -44,7 +44,7 @@ def create_token():
     if password is None:
         return jsonify({"msg": "Please provide an password address"}), 401
 
-    user_current = user.query.filter_by(email=email).first()
+    user_current = User.query.filter_by(email=email).first()
     print(user_current.password)
     if user_current is None:
         return jsonify({"msg": "Incorrect username"}), 401
@@ -68,7 +68,7 @@ def register_user():
     if is_active is None:
         return jsonify({"msg": "is_active is None"}), 401    
 
-    user_nuevo = user(email=email, password=password, is_active=is_active)
+    user_nuevo = User(email=email, password=password, is_active=is_active)
     db.session.add(user_nuevo)
     db.session.commit()
 

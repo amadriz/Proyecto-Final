@@ -2,14 +2,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class user(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<user %r>' % self.username
+        return '<user %r>' % self.email
 
     def serialize(self):
         return {
