@@ -6,17 +6,19 @@ import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-boo
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	let [email, cambiarEmail] = useState({ campo: "", valido: null });
-	let [password, cambiarPassword] = useState({ campo: "", valido: null });
+	//let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	//let [password, cambiarPassword] = useState({ campo: "", valido: null });
 	//let [newEmail, useEmail] = useState("");
 	//let [newPassword, usePassword] = useState("");
 
+	let [email, cambiarEmail] = useState("");
+	let [password, cambiarPassword] = useState("");
 	const token = sessionStorage.getItem("token");
 	console.log("This is you token", store.token);
-	console.log(email.campo, password.campo);
+	console.log(email, password);
 
 	const handleClick = () => {
-		actions.login(email.campo, password.campo);
+		actions.login(email, password);
 	};
 
 	if (store.token && store.token != "" && store.token != undefined) {
@@ -75,75 +77,21 @@ export const Login = () => {
 						{store.token && store.token != undefined ? (
 							"You are logged in with" + store.token
 						) : (
-							<Form>
-								<Form.Group controlId="formBasicEmail">
-									{/* Formulario: Campo Email para buscar usuario*/}
-									<Form.Label>Usuario</Form.Label>
-									<Form.Control
-										className="btnEmail"
-										type="email"
-										placeholder="Ingrese su correo electrónico"
-										id="email"
-										value={email.campo}
-										onChange={onChange}
-										onKeyUp={validarEmail} //se activa cuando pulsa una tecla
-										onBlur={validarEmail} // se activa cuando pulsa afuera del input
-										valido={email.valido}
-									/>
-								</Form.Group>
-								<Form.Group controlId="formBasicPassword">
-									{/* Formulario: Campo contraseña*/}
-									<Form.Label>Contraseña</Form.Label>
-									<Form.Control
-										className="btnEmail"
-										type="password"
-										placeholder="Ingrese su contraseña"
-										id="password1"
-										value={password.campo}
-										onChange={onChange2}
-										onKeyUp={validarContraseña} //se activa cuando pulsa una tecla
-										onBlur={validarContraseña} // se activa cuando pulsa afuera del input
-										valido={password.valido}
-									/>
-								</Form.Group>
-								{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
-								<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
-									Ingrese un correo electrónico válido
-								</Alert>
-								{/* Permite routear al componente SocialPage si se cumple los requesitos de acceso*/}
-								{/*<Link
-									className={
-										email.valido === true
-											? "btn btn-outline-primary float-right ml-1"
-											: "btn btn-outline-secondary disabled float-right ml-1"
-									}
-									eventKey={2}
-									to={email.valido === true ? "/listaEmpleos" : "/"}
-									onClick={() => handleClick()}>
-									Ingresar
-								</Link>*/}
-								<button
-									className={
-										email.valido === true
-											? "btn btn-outline-primary float-right ml-1"
-											: "btn btn-outline-secondary disabled float-right ml-1"
-									}
-									onClick={() => handleClick()}>
+							<div>
+								<input
+									type="text"
+									placeholder="email"
+									value={email}
+									onChange={e => cambiarEmail(e.target.value)}></input>
+								<input
+									type="text"
+									placeholder="clave"
+									value={password}
+									onChange={e => cambiarPassword(e.target.value)}></input>
+								<button className="btn btn-primary" onClick={() => handleClick()}>
 									Iniciar sesión
 								</button>
-
-								{/* Permite routear al Home en caso de cancelar la acción*/}
-								<Link className="" eventKey={2} to="/">
-									<Button variant="btn btn-outline-primary float-right ml-1" type="submit">
-										Cancelar
-									</Button>
-								</Link>
-
-								{/*
-							<Button variant="primary" type="submit">
-								Siguiente
-							</Button>*/}
-							</Form>
+							</div>
 						)}
 					</Col>
 
@@ -162,3 +110,67 @@ export const Login = () => {
 		</>
 	);
 };
+
+{
+	/*
+
+/----- :(aquí agregar el form)
+
+
+		<Form>
+								<Form.Group controlId="formBasicEmail">
+								
+									<Form.Label>Usuario</Form.Label>
+									<Form.Control
+										className="btnEmail"
+										type="email"
+										placeholder="Ingrese su correo electrónico"
+										id="email"
+										value={email.campo}
+										onChange={onChange}
+										onKeyUp={validarEmail} //se activa cuando pulsa una tecla
+										onBlur={validarEmail} // se activa cuando pulsa afuera del input
+										valido={email.valido}
+									/>
+								</Form.Group>
+								<Form.Group controlId="formBasicPassword">
+								
+									<Form.Label>Contraseña</Form.Label>
+									<Form.Control
+										className="btnEmail"
+										type="password"
+										placeholder="Ingrese su contraseña"
+										id="password1"
+										value={password.campo}
+										onChange={onChange2}
+										onKeyUp={validarContraseña} 
+										onBlur={validarContraseña} 
+										valido={password.valido}
+									/>
+								</Form.Group>
+								
+								<Alert className={email.valido === false ? "alert-danger" : "ocultar"}>
+									Ingrese un correo electrónico válido
+								</Alert>
+					
+								<button
+									className={
+										email.valido === true
+											? "btn btn-outline-primary float-right ml-1"
+											: "btn btn-outline-secondary disabled float-right ml-1"
+									}
+									onClick={() => handleClick()}>
+									Iniciar sesión
+								</button>
+
+							
+								<Link className="" eventKey={2} to="/">
+									<Button variant="btn btn-outline-primary float-right ml-1" type="submit">
+										Cancelar
+									</Button>
+								</Link>
+
+							</Form>
+                                
+*/
+}
