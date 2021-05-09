@@ -16,7 +16,7 @@ export const Login = () => {
 	const token = sessionStorage.getItem("token");
 	console.log("This is you token", store.token);
 	//console.log(email.campo, password.campo);
-	console.log(email, password);
+	console.log("Información ingresada por el usuario:", email, password);
 
 	/*const handleClick = () => {
 		actions.login(email.campo, password.campo);
@@ -37,6 +37,7 @@ export const Login = () => {
 		contraseña: /^.{8,12}$/
 	};
 
+	/**/
 	//ejecuta una función cuando existe un cambio en el input
 	const onChange = e => {
 		console.log(e.target.value);
