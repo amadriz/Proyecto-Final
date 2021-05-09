@@ -85,10 +85,10 @@ export const Navbars = () => {
 					{/* class ml-auto will turn elements to the right */}
 					<Nav className="ml-auto">
 						<Link eventKey={2} to="/login">
-							<button className="btn btn-outline-primary float-right">Ingresar</button>
+							<button className="btn btn-outline-primary float-right ml-1">Iniciar Sesión</button>
 						</Link>
 						<Link eventKey={2} to="/registro">
-							<button className="btn btn-outline-primary float-right">Registrarse</button>
+							<button className="btn btn-outline-primary float-right ml-1">Registrarse</button>
 						</Link>
 					</Nav>
 				</Navbar.Collapse>

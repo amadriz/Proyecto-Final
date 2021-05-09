@@ -74,6 +74,7 @@ export const Login = () => {
 								{/* Formulario: Campo Email para buscar usuario*/}
 								<Form.Label>Usuario</Form.Label>
 								<Form.Control
+									className="btnEmail"
 									type="email"
 									placeholder="Ingrese su correo electrónico"
 									id="email"
@@ -88,6 +89,7 @@ export const Login = () => {
 								{/* Formulario: Campo contraseña*/}
 								<Form.Label>Contraseña</Form.Label>
 								<Form.Control
+									className="btnEmail"
 									type="password"
 									placeholder="Ingrese su contraseña"
 									id="password1"
@@ -115,8 +117,10 @@ export const Login = () => {
 							</Link>
 
 							{/* Permite routear al Home en caso de cancelar la acción*/}
-							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
-								Cancelar
+							<Link className="" eventKey={2} to="/">
+								<Button variant="btn btn-outline-primary float-right ml-1" type="submit">
+									Cancelar
+								</Button>
 							</Link>
 
 							{/*
@@ -125,6 +129,17 @@ export const Login = () => {
 							</Button>*/}
 						</Form>
 					</Col>
+
+					<Link to="/verificar">
+						<Button variant="btn btn-link" type="submit">
+							¿Ha olvidado su contraseña?
+						</Button>
+					</Link>
+					<Link to="/registro">
+						<Button variant="btn btn-link" type="submit">
+							¿No tienes cuenta? Regístrese aquí
+						</Button>
+					</Link>
 				</Row>
 			</Container>
 		</>

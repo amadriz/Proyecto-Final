@@ -70,6 +70,7 @@ export const RecuperarKey = () => {
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Ingrese su nueva contraseña</Form.Label>
 								<Form.Control
+									className="btnEmail"
 									type="password"
 									placeholder="Nueva contraseña"
 									id="password1"
@@ -84,6 +85,7 @@ export const RecuperarKey = () => {
 								{/* Formulario: Campo Confirmar nueva contraseña*/}
 								<Form.Label>Confirme su nueva contraseña</Form.Label>
 								<Form.Control
+									className="btnEmail"
 									type="password"
 									placeholder="Confirme su contraseña"
 									id="password2"
