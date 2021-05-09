@@ -8,14 +8,15 @@ export const Login = () => {
 	const history = useHistory();
 	let [email, cambiarEmail] = useState({ campo: "", valido: null });
 	let [password, cambiarPassword] = useState({ campo: "", valido: null });
-	let [newEmail, nuevoEmail] = useState("");
-	let [newPassword, nuevoPassword] = useState("");
+	//let [newEmail, useEmail] = useState("");
+	//let [newPassword, usePassword] = useState("");
 
 	const token = sessionStorage.getItem("token");
 	console.log("This is you token", store.token);
+	console.log(email.campo, password.campo);
 
 	const handleClick = () => {
-		actions.login(newEmail, newPassword);
+		actions.login(email.campo, password.campo);
 	};
 
 	if (store.token && store.token != "" && store.token != undefined) {
@@ -56,10 +57,10 @@ export const Login = () => {
 	const validarContraseña = () => {
 		if (expresiones.contraseña) {
 			if (expresiones.contraseña.test(password.campo)) {
-				console.log("Input correcto");
+				console.log("-Input correcto-");
 				cambiarPassword({ ...password, valido: false });
 			} else {
-				console.log("Input incorrecto");
+				console.log("-Input incorrecto-");
 				cambiarPassword({ ...password, valido: true });
 			}
 		}
@@ -110,7 +111,7 @@ export const Login = () => {
 									Ingrese un correo electrónico válido
 								</Alert>
 								{/* Permite routear al componente SocialPage si se cumple los requesitos de acceso*/}
-								<Link
+								{/*<Link
 									className={
 										email.valido === true
 											? "btn btn-outline-primary float-right ml-1"
@@ -120,7 +121,16 @@ export const Login = () => {
 									to={email.valido === true ? "/listaEmpleos" : "/"}
 									onClick={() => handleClick()}>
 									Ingresar
-								</Link>
+								</Link>*/}
+								<button
+									className={
+										email.valido === true
+											? "btn btn-outline-primary float-right ml-1"
+											: "btn btn-outline-secondary disabled float-right ml-1"
+									}
+									onClick={() => handleClick()}>
+									Iniciar sesión
+								</button>
 
 								{/* Permite routear al Home en caso de cancelar la acción*/}
 								<Link className="" eventKey={2} to="/">
