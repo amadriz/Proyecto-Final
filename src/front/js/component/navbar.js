@@ -98,9 +98,13 @@ export const Navbars = () => {
 							<Link to="/socialpage">
 								<Button variant="btn btn-outline-primary float-right ml-1">Perfil</Button>
 							</Link>
-							<Button variant="btn btn-outline-primary float-right ml-1" onClick={() => actions.logout()}>
-								Cerrar sesión
-							</Button>
+							<Link to="/">
+								<Button
+									variant="btn btn-outline-primary float-right ml-1"
+									onClick={() => actions.logout()}>
+									Cerrar sesión
+								</Button>
+							</Link>
 						</Nav>
 					)}
 				</Navbar.Collapse>
