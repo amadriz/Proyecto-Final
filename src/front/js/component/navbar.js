@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Navbar, Container, Row, Col, Button, Carousel, Modal, Nav, Form, NavDropdown } from "react-bootstrap";
 import logopeq from "../../img/logopeq.png";
-//import { Context } from "../store/appContext";
+import { Context } from "../store/appContext";
 
 export const Navbars = () => {
-	//const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
 	return (
 		// <nav className="navbar navbar-light bg-light mb-3">
 		//  <Link to="/">
@@ -83,14 +84,25 @@ export const Navbars = () => {
 						</Modal.Footer>
 					</Modal>
 					{/* class ml-auto will turn elements to the right */}
-					<Nav className="ml-auto">
-						<Link eventKey={2} to="/login">
-							<button className="btn btn-outline-primary float-right ml-1">Iniciar Sesión</button>
-						</Link>
-						<Link eventKey={2} to="/registro">
-							<button className="btn btn-outline-primary float-right ml-1">Registrarse</button>
-						</Link>
-					</Nav>
+					{!store.token ? (
+						<Nav className="ml-auto">
+							<Link to="/login">
+								<Button variant="btn btn-outline-primary float-right ml-1">Iniciar sesión</Button>
+							</Link>
+							<Link to="/registro">
+								<Button variant="btn btn-outline-primary float-right ml-1">Registrarse</Button>
+							</Link>
+						</Nav>
+					) : (
+						<Nav className="ml-auto">
+							<Link to="/socialpage">
+								<Button variant="btn btn-outline-primary float-right ml-1">Perfil</Button>
+							</Link>
+							<Button variant="btn btn-outline-primary float-right ml-1" onClick={() => actions.logout()}>
+								Cerrar sesión
+							</Button>
+						</Nav>
+					)}
 				</Navbar.Collapse>
 			</Navbar>
 		</>
