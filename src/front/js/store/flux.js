@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			listaEmpleos: []
+			listaEmpleos: [],
+			token: null
 		},
 		actions: {
 			fetchEmpleos: async () => {
@@ -20,11 +21,64 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				console.log("***DATA***", json);
 				setStore({ listaEmpleos: json.jobs });
-			}
+			},
 			// setFavorites: name => {
 			// 	const store = getStore();
 			// 	setStore({ favorites: [...store.favorites, name] });
 			// }
+
+			syncTokenFromSessionStorage: () => {
+				const token = sessionStorage.getItem("token");
+				console.log("Aplication just loaded, sy...");
+				if (token && token != "" && token != undefined) setStore({ token: token });
+			},
+
+			logout: () => {
+				const token = sessionStorage.removeItem("token");
+				console.log("Login out");
+				setStore({ token: null });
+			},
+
+			login: async (email, password) => {
+				const opts = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				};
+
+				try {
+					const resp = await fetch("https://3001-lavender-guan-rvy2zyq1.ws-us03.gitpod.io/api/token", opts);
+					if (resp.status !== 200) {
+						alert("There has been some error");
+						return false;
+					}
+					const data = await resp.json();
+					console.log("This came from the backend", data);
+					sessionStorage.setItem("token", data.access_token);
+					setStore({ token: data.access_token });
+					return true;
+				} catch (error) {
+					console.error("There has been an error login in");
+				}
+			},
+
+			getMessage: () => {
+				const store = getStore();
+				const opts = {
+					headers: {
+						Authorization: "Bearer " + store.token
+					}
+				};
+				fetch(process.env.BACKEND_URL + "/api/hello", opts)
+					.then(resp => resp.json())
+					.then(data => setStore({ message: data.message }))
+					.catch(error => console.log("Error loading message from backend", error));
+			}
 		}
 	};
 };

@@ -9,7 +9,7 @@ class user(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<user %r>' % self.username
+        return '<user %r>' % self.email
 
     def serialize(self):
         return {

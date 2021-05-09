@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+//import { Context } from "../store/appContext";
 import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
 
 export const Login = () => {
+	//const { store, actions } = useContext(Context);
+	//const history = useHistory();
 	let [email, cambiarEmail] = useState({ campo: "", valido: null });
 	let [password, cambiarPassword] = useState({ campo: "", valido: null });
+
+	//const token = sessionStorage.getItem("token");
+	//console.log("This is you token", store.token);
+
+	//const handleClick = () => {
+	//	actions.login(email, password);
+	//};
+
+	//if (store.token && store.token != "" && store.token != undefined) {
+	//	history.push("/listaEmpleos");
+	//} else if (store.token && store.token == "" && store.token == undefined) {
+	//	history.push("/login");
+	//}
 
 	const expresiones = {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
