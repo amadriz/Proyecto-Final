@@ -6,19 +6,24 @@ import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-boo
 export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	let [email, cambiarEmail] = useState({ campo: "", valido: null });
-	let [password, cambiarPassword] = useState({ campo: "", valido: null });
+	//let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	//let [password, cambiarPassword] = useState({ campo: "", valido: null });
 	//let [newEmail, useEmail] = useState("");
 	//let [newPassword, usePassword] = useState("");
 
-	//let [email, cambiarEmail] = useState("");
-	//let [password, cambiarPassword] = useState("");
+	let [email, cambiarEmail] = useState("");
+	let [password, cambiarPassword] = useState("");
 	const token = sessionStorage.getItem("token");
 	console.log("This is you token", store.token);
-	console.log(email.campo, password.campo);
+	//console.log(email.campo, password.campo);
+	console.log(email, password);
+
+	/*const handleClick = () => {
+		actions.login(email.campo, password.campo);
+    };*/
 
 	const handleClick = () => {
-		actions.login(email.campo, password.campo);
+		actions.login(email, password);
 	};
 
 	if (store.token && store.token != "" && store.token != undefined) {
@@ -77,7 +82,61 @@ export const Login = () => {
 						{store.token && store.token != undefined ? (
 							"You are logged in with" + store.token
 						) : (
-							<Form>
+							<div>
+								<input
+									type="text"
+									placeholder="email"
+									value={email}
+									onChange={e => cambiarEmail(e.target.value)}></input>
+								<input
+									type="text"
+									placeholder="clave"
+									value={password}
+									onChange={e => cambiarPassword(e.target.value)}></input>
+								<button className="btn btn-primary" onClick={() => handleClick()}>
+									Iniciar sesión
+								</button>
+							</div>
+						)}
+					</Col>
+
+					<Link to="/verificar">
+						<Button variant="btn btn-link" type="submit">
+							¿Ha olvidado su contraseña?
+						</Button>
+					</Link>
+					<Link to="/registro">
+						<Button variant="btn btn-link" type="submit">
+							¿No tienes cuenta? Regístrese aquí
+						</Button>
+					</Link>
+				</Row>
+			</Container>
+		</>
+	);
+};
+
+{
+	/*
+    	<div>
+								<input
+									type="text"
+									placeholder="email"
+									value={email}
+									onChange={e => cambiarEmail(e.target.value)}></input>
+								<input
+									type="text"
+									placeholder="clave"
+									value={password}
+									onChange={e => cambiarPassword(e.target.value)}></input>
+								<button className="btn btn-primary" onClick={() => handleClick()}>
+									Iniciar sesión
+								</button>
+							</div>
+
+/----- :(aquí agregar el form)
+
+		<Form>
 								<Form.Group controlId="formBasicEmail">
 									<Form.Label>Usuario</Form.Label>
 									<Form.Control
@@ -127,46 +186,6 @@ export const Login = () => {
 									</Button>
 								</Link>
 							</Form>
-						)}
-					</Col>
-
-					<Link to="/verificar">
-						<Button variant="btn btn-link" type="submit">
-							¿Ha olvidado su contraseña?
-						</Button>
-					</Link>
-					<Link to="/registro">
-						<Button variant="btn btn-link" type="submit">
-							¿No tienes cuenta? Regístrese aquí
-						</Button>
-					</Link>
-				</Row>
-			</Container>
-		</>
-	);
-};
-
-{
-	/*
-    	<div>
-								<input
-									type="text"
-									placeholder="email"
-									value={email}
-									onChange={e => cambiarEmail(e.target.value)}></input>
-								<input
-									type="text"
-									placeholder="clave"
-									value={password}
-									onChange={e => cambiarPassword(e.target.value)}></input>
-								<button className="btn btn-primary" onClick={() => handleClick()}>
-									Iniciar sesión
-								</button>
-							</div>
-
-/----- :(aquí agregar el form)
-
-
 		
                                 
 */
