@@ -4,6 +4,12 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { Container, Row, Col, Jumbotron } from "react-bootstrap";
 import arteTipsCurri from "../../img/arteTipsCurri.png";
 import { Slider } from "../component/slider";
+import logo1 from "../../img/logo1.png";
+import logo2 from "../../img/logo2.png";
+import logo3 from "../../img/logo3.png";
+import logo4 from "../../img/logo4.png";
+import logo5 from "../../img/logo5.png";
+import logo6 from "../../img/logo6.png";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -35,6 +41,39 @@ export const Home = () => {
 							Recuerda que los reclutadores reciben miles de Curriculum y solo toman algunos minutos para
 							leer el tuyo.
 						</p>
+					</Col>
+				</Row>
+				<Row className="mt-5">
+					<Col sm={12}>
+						<h1
+							className="text-center text-uppercase"
+							data-aos="zoom-in"
+							data-aos-duration="1000"
+							data-aos-delay="50">
+							Empresas Participantes
+						</h1>
+					</Col>
+				</Row>
+				<Row className="text-center mt-5 mb-5">
+					<Col sm={4} data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
+						<img className="img-fluid" src={logo1} />
+					</Col>
+					<Col sm={4} data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
+						<img className="img-fluid" src={logo5} />
+					</Col>
+					<Col sm={4} data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
+						<img className="img-fluid" src={logo4} />
+					</Col>
+				</Row>
+				<Row className="text-center mt-3 mb-5">
+					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+						<img className="img-fluid" src={logo3} />
+					</Col>
+					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+						<img className="img-fluid" src={logo6} />
+					</Col>
+					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+						<img className="img-fluid" src={logo2} />
 					</Col>
 				</Row>
 			</Container>

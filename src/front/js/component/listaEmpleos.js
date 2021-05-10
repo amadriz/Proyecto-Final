@@ -6,9 +6,40 @@ import misEstilos from "../../styles/misEstilos.css";
 import PropTypes from "prop-types";
 import listaEmpleoMain from "../../img/listaEmpleoMain.jpg";
 
+const tablaJobs = [
+	{
+		title: "IT - Database Administrator",
+		location: "South Charleston, WV",
+		snippet: " Company Description Infotree's approach to eve…essful matches for our employees and customers...",
+		salary: "",
+		source: "clicktrader.io"
+	}
+];
+
 //Funcion para que funcione el link en el data table
 const renderUrl = (val, row) => {
 	return <a href={`${val.link}`}>Ver Puesto</a>;
+};
+
+// Esta función agrega un custom cel al datable con el icono para favorito y funcion para guardar favoritos
+const renderFavorito = row => {
+	return tablaJobs.map((item, index) => {
+		return (
+			// <Button className="btn btn-outline-success" onClick={() => alert("Agregado a Favoritos")}>
+			<Button
+				key={index}
+				className="btn btn-outline-success"
+				onClick={() => alert(`Favorito guardado ` + item.title)}>
+				<i className="fas fa-heart" />
+			</Button>
+		);
+	});
+};
+
+let favo = [];
+
+const favoritos = () => {
+	return console.log("works");
 };
 
 const columnas = [
@@ -37,6 +68,10 @@ const columnas = [
 		selector: "link",
 		sortable: true,
 		cell: renderUrl
+	},
+	{
+		name: "Favorito",
+		cell: renderFavorito
 	}
 ];
 
