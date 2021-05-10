@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch("https://3001-gray-monkey-8nq2euws.ws-us03.gitpod.io/api/token", opts);
+					const resp = await fetch("https://3001-plum-zebra-y4k2cm50.ws-us03.gitpod.io/api/token", opts);
 					if (resp.status !== 200) {
 						alert("There has been some error");
 						return false;

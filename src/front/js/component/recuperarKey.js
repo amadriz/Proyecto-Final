@@ -62,7 +62,6 @@ export const RecuperarKey = () => {
 				<Row className="mt-5">
 					<Col sm={12}>
 						<h1>Recupere su contraseña</h1>
-
 						<hr />
 
 						<Form>
