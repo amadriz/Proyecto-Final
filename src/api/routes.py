@@ -51,15 +51,16 @@ def get_register():
 
 @api.route('/register/<string:email>', methods=['PUT'])
 def put_register(email):
-        data = request.get_json()
+        email = request.json.get("email", None)
+        print(email)
         usuario = user.query.filter_by(email=email).first()
         if usuario:
-            usuario.password = data["password"]
+            usuario.password = email["password"]
         else:
-            usuario = user(email=email,**data)
+            usuario = user(email=email,**email)
         db.session.add(usuario)
         db.session.commit()
-        return usuario.json()
+        return usuario.json(),200
 
 #-----------------------------------------------------------#
 
