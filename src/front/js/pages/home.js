@@ -50,30 +50,30 @@ export const Home = () => {
 							data-aos="zoom-in"
 							data-aos-duration="1000"
 							data-aos-delay="50">
-							Empresas Participantes
+							Empleadores Participantes
 						</h1>
 					</Col>
 				</Row>
 				<Row className="text-center mt-5 mb-5">
 					<Col sm={4} data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid" src={logo1} />
+						<img className="img-fluid w-10" src={logo1} />
 					</Col>
 					<Col sm={4} data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid" src={logo5} />
+						<img className="img-fluid w-10" src={logo5} />
 					</Col>
 					<Col sm={4} data-aos="fade-down" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid" src={logo4} />
+						<img className="img-fluid w-10" src={logo4} />
 					</Col>
 				</Row>
 				<Row className="text-center mt-3 mb-5">
 					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid" src={logo3} />
+						<img className="img-fluid w-10" src={logo3} />
 					</Col>
 					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid" src={logo6} />
+						<img className="img-fluid w-10" src={logo6} />
 					</Col>
 					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid" src={logo2} />
+						<img className="img-fluid w-10" src={logo2} />
 					</Col>
 				</Row>
 			</Container>
