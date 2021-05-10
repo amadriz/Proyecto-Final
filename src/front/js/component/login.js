@@ -84,17 +84,23 @@ export const Login = () => {
 							"You are logged in with" + store.token
 						) : (
 							<div>
+								<label>Usuario</label>
 								<input
+									className="btnEmail"
 									type="text"
-									placeholder="email"
+									placeholder="Por favor, ingrese su correo electrónico"
 									value={email}
-									onChange={e => cambiarEmail(e.target.value)}></input>
+									onChange={e => cambiarEmail(e.target.value)}
+									required="required"></input>
+								<label>Contraseña</label>
 								<input
+									className="btnEmail"
 									type="text"
-									placeholder="clave"
+									placeholder="Por favor, ingrese su contraseña"
 									value={password}
-									onChange={e => cambiarPassword(e.target.value)}></input>
-								<button className="btn btn-primary" onClick={() => handleClick()}>
+									onChange={e => cambiarPassword(e.target.value)}
+									required="required"></input>
+								<button className="btn btnEnviar btn-primary" onClick={() => handleClick()}>
 									Iniciar sesión
 								</button>
 							</div>
@@ -107,7 +113,7 @@ export const Login = () => {
 						</Button>
 					</Link>
 					<Link to="/registro">
-						<Button variant="btn btn-link" type="submit">
+						<Button variant="btn  btn-link" type="submit">
 							¿No tienes cuenta? Regístrese aquí
 						</Button>
 					</Link>
