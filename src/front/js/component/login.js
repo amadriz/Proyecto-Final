@@ -84,22 +84,26 @@ export const Login = () => {
 							"You are logged in with" + store.token
 						) : (
 							<div>
-								<label>Usuario</label>
-								<input
-									className="btnEmail"
-									type="email"
-									placeholder="Por favor, ingrese su correo electrónico"
-									value={email}
-									onChange={e => cambiarEmail(e.target.value)}
-									required="required"></input>
-								<label>Contraseña</label>
-								<input
-									className="btnEmail"
-									type="password"
-									placeholder="Por favor, ingrese su contraseña"
-									value={password}
-									onChange={e => cambiarPassword(e.target.value)}
-									required="required"></input>
+								<div>
+									<label>Usuario</label>
+									<input
+										className="btnEmail"
+										type="email"
+										placeholder="Por favor, ingrese su correo electrónico"
+										value={email}
+										onChange={e => cambiarEmail(e.target.value)}
+										required="required"></input>
+								</div>
+								<div>
+									<label>Contraseña</label>
+									<input
+										className="btnEmail"
+										type="password"
+										placeholder="Por favor, ingrese su contraseña"
+										value={password}
+										onChange={e => cambiarPassword(e.target.value)}
+										required="required"></input>
+								</div>
 								<button className="btn btnEnviar btn-primary" onClick={() => handleClick()}>
 									Iniciar sesión
 								</button>
