@@ -6,7 +6,8 @@ class user(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=True, default=True)
+  
 
     def __repr__(self):
         return '<user %r>' % self.username
@@ -14,23 +15,24 @@ class user(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "email": self.email
+              
             # do not serialize the password, its a security breach
         }
 
 
 class registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    identificacion = db.Column(db.Integer, unique=True, nullable=False)
-    tipo_id = db.Column(db.String(120), unique=True, nullable=True)
-    nombre = db.Column(db.String(120), unique=True, nullable=False)
-    apellido1 = db.Column(db.String(120), unique=True, nullable=False)
+    identificacion = db.Column(db.Integer, unique=True, nullable=True)
+    tipo_idnt = db.Column(db.String(120), unique=False, nullable=True, default="Pasaporte")
+    nombre = db.Column(db.String(120), unique=False, nullable=True)
+    apellido1 = db.Column(db.String(120), unique=False, nullable=True)
     apellido2 = db.Column(db.String(120), unique=False, nullable=True)
-    telefono = db.Column(db.Integer, unique=True, nullable=False)
+    telefono = db.Column(db.Integer, unique=True, nullable=True)
     fecha_nacimiento = db.Column(db.String, unique=True, nullable=False)
     genero = db.Column(db.String(120), unique=False, nullable=True)
     estado_civil = db.Column(db.String(120), unique=False, nullable=True)
-    provincia = db.Column(db.String(120), unique=False, nullable=False)
+    provincia = db.Column(db.String(120), unique=False, nullable=True)
     canton = db.Column(db.String(120), unique=False, nullable=True)
     distrito = db.Column(db.String(120), unique=False, nullable=True)
     dir_exacta = db.Column(db.String(120), unique=False, nullable=True)
@@ -43,7 +45,7 @@ class registro(db.Model):
        return {
             "id": self.id,
             "identificacion":self.identificacion,
-            "tipo_id":self.tipo_id,
+            "tipo_idnt":self.tipo_idnt,
             "nombre": self.nombre,
             "apellido1": self.apellido1,
             "apellido2": self.apellido2,
@@ -54,7 +56,7 @@ class registro(db.Model):
             "provincia":self.provincia,
             "canton":self.canton,
             "distrito":self.distrito,
-            "dir_exacta":self.dir_exacta,
+            "dir_exacta":self.dir_exacta
             # do not serialize the password, its a security breach
         }
     
