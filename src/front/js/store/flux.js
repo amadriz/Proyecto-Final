@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch("https://3001-gray-sole-thylpu0u.ws-us04.gitpod.io/api/token", opts);
+					const resp = await fetch("https://3001-emerald-squid-cynb8pd9.ws-us04.gitpod.io/api/token", opts);
 					if (resp.status !== 200) {
 						alert("Por favor, complete los campos solicitados para continuar");
 						return false;
