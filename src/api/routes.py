@@ -78,7 +78,7 @@ def update_register(email):
 
     db.session.commit()
 
-    return jsonify("El usuarios se ha actualizado correctamente"), 200   
+    return jsonify("El usuario se ha actualizado correctamente"), 200   
 
 
 @api.route('/register/<int:id>', methods=['PUT'])
