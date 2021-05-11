@@ -42,7 +42,6 @@ def create_token():
         return jsonify({"msg": "Incorrect username"}), 401
     if user_current.password != password:
         return jsonify({"msg": "Incorrect password"}), 401
-
        
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token), 200
@@ -90,6 +89,7 @@ def update_register_2(id):
 def update_register_3(): 
 
     email = request.json.get("email", None)
+    
     password = request.json.get("password", None)
 
     usuario = User.query.filter_by(email=email).first()   

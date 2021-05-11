@@ -87,7 +87,7 @@ export const Login = () => {
 								<label>Usuario</label>
 								<input
 									className="btnEmail"
-									type="text"
+									type="email"
 									placeholder="Por favor, ingrese su correo electrónico"
 									value={email}
 									onChange={e => cambiarEmail(e.target.value)}
@@ -95,7 +95,7 @@ export const Login = () => {
 								<label>Contraseña</label>
 								<input
 									className="btnEmail"
-									type="text"
+									type="password"
 									placeholder="Por favor, ingrese su contraseña"
 									value={password}
 									onChange={e => cambiarPassword(e.target.value)}
