@@ -2,15 +2,15 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class user(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=True, default=True)
   
 
-    def __repr__(self):
-        return '<user %r>' % self.username
+    def __repr__(self): 
+        return '<User %r>' % self.email
 
     def serialize(self):
         return {
@@ -19,7 +19,6 @@ class user(db.Model):
               
             # do not serialize the password, its a security breach
         }
-
 
 class registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,4 +58,4 @@ class registro(db.Model):
             "dir_exacta":self.dir_exacta
             # do not serialize the password, its a security breach
         }
-    
+

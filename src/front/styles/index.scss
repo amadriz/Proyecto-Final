@@ -8,12 +8,23 @@
 width: 100%;
 margin-right: 0;
 }
-}
+}79a3b1
 */
 
 body{
     background-color: #f2f2f2;
 }
+
+
+
+/*
+body{
+    background: linear-gradient(
+    90deg,
+    #3edbf0 0%,
+    #77acf1 100%
+  );
+}*/
 
 @media screen and (min-width: 570px) {
 
@@ -21,17 +32,34 @@ body{
   border-radius: 15px;
   background-color: white;
   padding: 20px;
-  width: 590px;
+  width: 450px;
   padding-top: 0%;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.79) ;
 
 }
 
 .btnEmail{
-    width: 550px;
+    width: 400px;
     height: 50px;
     font-size: large;
+    background-color: transparent;
+    color: black;
+    //outline: none;
+    border-bottom: solid;
+    margin-bottom: 10px;
    
+}
+
+
+
+.btnEnviar{   
+    
+    margin: 10px;
+    width: 400px;
+    height: 50px;
+    font-size: large;
+ 
+    
 }
 
 }

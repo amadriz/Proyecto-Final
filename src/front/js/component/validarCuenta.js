@@ -1,10 +1,85 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Label, Text, Alert } from "react-bootstrap";
 
 export const ValidarCuenta = () => {
-	let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	//let [email, cambiarEmail] = useState({ campo: "", valido: null });
+	const [auth, setAuth] = useState(false);
+	const [email, setCorreo] = useState("");
+	const [password, setContraseña] = useState("");
 
+	{
+		/*Validar con BD: PSQL*/
+	}
+	const handleClick = e => {
+		e.preventDefault();
+
+		const body = {
+			email: email,
+			password: password
+		};
+
+		fetch("https://3001-emerald-squid-cynb8pd9.ws-us04.gitpod.io/api/register", {
+			method: "PUT",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(resp => resp.json())
+			.then(data => {
+				console.log("Soy data:" + data);
+				setAuth(true);
+			})
+			.catch(error => console.log("Cargando un error desde el Backend", error));
+	};
+	return (
+		<>
+			<Container className="mt-auto vs-container">
+				<Row className="mt-5">
+					<Col sm={12}>
+						<h1>¡Nueva contraseña!</h1>
+						<hr />
+
+						<div>
+							<Form onSubmit={handleClick}>
+								<div>
+									<label>Dirección de correo electrónico</label>
+									<input
+										className="btnEmail"
+										type="email"
+										id="inputEmail"
+										value={email}
+										placeholder="Por favor, ingrese su correo electrónico"
+										onChange={e => setCorreo(e.target.value)}
+										required="required"></input>
+								</div>
+								<div>
+									<label>Ingrese la nueva contraseña</label>
+									<input
+										className="btnEmail"
+										type="password"
+										id="inputPassword"
+										value={password}
+										placeholder="Por favor, ingrese su nueva contraseña"
+										onChange={e => setContraseña(e.target.value)}
+										required="required"></input>
+								</div>
+								<button type="submit" className="btn btnEnviar btn-primary">
+									Actualizar usuario
+								</button>
+							</Form>
+							{auth ? <Redirect to="/login" /> : null}
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		</>
+	);
+};
+
+/* 
+#--------------------------- Se agregaba fuera del RETURN ------------------------#
 	const expresiones = {
 		correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 	};
@@ -27,20 +102,13 @@ export const ValidarCuenta = () => {
 			}
 		}
 	};
+#--------------------------- Se agregaba dentro del Form ------------------------#
 
-	return (
-		<>
-			<Container className="mt-auto vs-container">
-				<Row className="mt-5">
-					<Col sm={12}>
-						<h1>Recuperar su cuenta</h1>
-						<hr />
-						<Form>
-							<Form.Group className="" controlId="formBasicEmail">
-								{/* Formulario: Campo Email para buscar usuario*/}
+                            <Form.Group className="" controlId="formBasicEmail">
 								<Form.Label>
 									Ingrese su dirección de correo electrónico para buscar su cuenta.
-								</Form.Label>
+                                </Form.Label>
+                                
 								<Form.Control
 									className="btnEmail"
 									type="email"
@@ -52,7 +120,6 @@ export const ValidarCuenta = () => {
 									onBlur={validarEmail} // se activa cuando pulsa afuera del input
 									valido={email.valido}
 								/>
-								{/* Text de advertencia en caso que muestra al validar la exxpresión de email*/}
 								<Alert className={email.valido === false ? "mostrar alert-danger" : "ocultar"}>
 									<button className="close">
 										<span>&times;</span>
@@ -61,7 +128,6 @@ export const ValidarCuenta = () => {
 								</Alert>
 							</Form.Group>
 
-							{/* Permite routear al componente recuperar*/}
 							<Link
 								className={
 									email.valido === true
@@ -71,20 +137,10 @@ export const ValidarCuenta = () => {
 								eventKey={2}
 								to={email.valido === true ? "/recuperar" : "/"}>
 								Buscar
-							</Link>
-							{/* Permite routear al Home en caso de cancelar la acción*/}
+                            </Link>
+                            
 							<Link className="btn btn-outline-primary float-right ml-1" eventKey={2} to="/">
 								Cancelar
 							</Link>
 
-							{/*
-							<Button variant="primary" type="submit">
-								Siguiente
-							</Button>*/}
-						</Form>
-					</Col>
-				</Row>
-			</Container>
-		</>
-	);
-};
+*/
