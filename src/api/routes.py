@@ -81,21 +81,43 @@ def update_register(email):
     return jsonify("El usuarios se ha actualizado correctamente"), 200   
 
 
-
 @api.route('/register/<int:id>', methods=['PUT'])
 def update_register_2(id): 
-
     usuario = user.query.get(id)
     if usuario is None:
         raise APIException('Usuario no encontrado', status_code=403)
-
-    request_body = request.get.json()
+    request_body = request.json.get()
     if "password" in request_body:
         usuario.password = register_body["password"]
+    db.session.commit()
+    return jsonify("El usuario se ha actualizado correctamente"), 200
+
+
+@api.route('/register', methods=['PUT'])
+def update_register_3(): 
+
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+
+    usuario = user.query.filter_by(email=email).first()   
+
+    print(email, password)
+    
+    if email is None:
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
+    
+    if "email" in email:
+       
+        usuario.password = register_body["password"]
+      
+    print(usuario.password)
 
     db.session.commit()
+   # request_body = request.get.json()
+   # if "password" in request_body:
+   #     usuario.password = register_body["password"]
 
-    return jsonify("El usuarios se ha actualizado correctamente"), 200  
+    return jsonify({"msg:" "El usuario se ha actualizado correctamente"}), 200  
 
 #-----------------------------------------------------------#
 
