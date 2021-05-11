@@ -66,7 +66,7 @@ def get_register():
 
 
 @api.route('/register/<string:email>', methods=['PUT'])
-def delete_register(email): 
+def update_register(email): 
 
     usuario = user.query.get(email)
     if usuario is None:
@@ -79,6 +79,23 @@ def delete_register(email):
     db.session.commit()
 
     return jsonify("El usuarios se ha actualizado correctamente"), 200   
+
+
+
+@api.route('/register/<int:id>', methods=['PUT'])
+def update_register_2(id): 
+
+    usuario = user.query.get(id)
+    if usuario is None:
+        raise APIException('Usuario no encontrado', status_code=403)
+
+    request_body = request.get.json()
+    if "password" in request_body:
+        usuario.password = register_body["password"]
+
+    db.session.commit()
+
+    return jsonify("El usuarios se ha actualizado correctamente"), 200  
 
 #-----------------------------------------------------------#
 
