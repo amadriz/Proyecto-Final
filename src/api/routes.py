@@ -49,18 +49,36 @@ def get_register():
 
 #-----------------------------------------------------------#
 
+#@api.route('/register/<string:email>', methods=['PUT'])
+#def put_register(email):
+#        email = request.json.get("email", None)
+#        print(email)
+#        usuario = user.query.filter_by(email=email).first()
+#        if usuario:
+#            usuario.password = email["password"]
+#        else:
+#            usuario = user(email=email)
+#            #usuario = user(email=email,**email)
+#        db.session.add(usuario)
+#        db.session.commit()
+#        return usuario.json(),200
+
+
+
 @api.route('/register/<string:email>', methods=['PUT'])
-def put_register(email):
-        email = request.json.get("email", None)
-        print(email)
-        usuario = user.query.filter_by(email=email).first()
-        if usuario:
-            usuario.password = email["password"]
-        else:
-            usuario = user(email=email,**email)
-        db.session.add(usuario)
-        db.session.commit()
-        return usuario.json(),200
+def delete_register(email): 
+
+    usuario = user.query.get(email)
+    if usuario is None:
+        raise APIException('Usuario no encontrado', status_code=403)
+
+    request_body = request.get.json()
+    if "password" in request_body:
+        usuario.password = register_body["password"]
+
+    db.session.commit()
+
+    return jsonify("El usuarios se ha actualizado correctamente"), 200   
 
 #-----------------------------------------------------------#
 
@@ -86,17 +104,21 @@ def register_user():
     print(email, password)
     
     if email is None:
-        return jsonify({"msg": "Por favor, agregue un email"}), 401
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
     if password is None:
-        return jsonify({"msg": "Por favor, agregue una contraseña"}), 401
+        return jsonify({"msg": "Por favor, agregue una contraseña"}), 400
     if is_active is None:
-        return jsonify({"msg": "Active el usuario"}), 401    
+        return jsonify({"msg": "Active el usuario"}), 400
 
-    user_nuevo = user(email=email, password=password, is_active=is_active)
-    db.session.add(user_nuevo)
-    db.session.commit()
+    usuario = user.query.filter_by(email=email, password=password).first()
+    if usuario:
+        return jsonify({"msg": "Ya existe este usuario en la BD"}),401
+    else:
+        user_nuevo = user(email=email, password=password, is_active=is_active)
     
-    return jsonify({"msg": "Usuario creado satisfactorimente"}), 200    
+        db.session.add(user_nuevo)
+        db.session.commit()
+        return jsonify({"msg": "Usuario creado satisfactorimente"}), 200    
 
 #-----------------------------------------------------------#
 
@@ -107,5 +129,17 @@ def handle_hello():
         "message": "Hello! I'm a message that came from the backend"
     }   
     return jsonify(response_body), 200
+
+#-----------------------------------------------------------#
+
+@api.route('/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user_id = get_jwt_identity()
+    usuario = user.query.get(current_user_id)
+
+    print(current_user_id, usuario)
+    return jsonify({"id":usuario.id, "email": usuario.email}), 200
+
 
 #-----------------------------------------------------------#
