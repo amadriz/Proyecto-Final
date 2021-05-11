@@ -66,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ token: data.access_token });
 					return true;
 				} catch (error) {
-					console.error("There has been an error login in");
+					console.error("Error en Iniciar Sesión!");
 				}
 			},
 
@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(process.env.BACKEND_URL + "/api/hello", opts)
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
+					.catch(error => console.log("Cargando un error desde el Backend", error));
 			}
 		}
 	};
