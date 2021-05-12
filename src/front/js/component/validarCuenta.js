@@ -19,7 +19,9 @@ export const ValidarCuenta = () => {
 			password: password
 		};
 
-		fetch("https://empleo45-proyecto-final.herokuapp.com/api/register", {
+		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/register", {
+
+		fetch("https://3001-blush-jackal-ld2auqu6.ws-us04.gitpod.io/api/register", {
 			method: "PUT",
 			body: JSON.stringify(body),
 			headers: {
