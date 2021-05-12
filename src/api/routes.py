@@ -58,94 +58,12 @@ def get_register():
 
 #-----------------------------------------------------------#
 
-
-@api.route('/register/<string:email>', methods=['PUT'])
-def update_register(email): 
-
-    usuario = User.query.get(email)
-    if usuario is None:
-        raise APIException('Usuario no encontrado', status_code=403)
-
-    request_body = request.get.json()
-    if "password" in request_body:
-        usuario.password = register_body["password"]
-
-    db.session.commit()
-
-    return jsonify("El usuario se ha actualizado correctamente"), 200   
-
-
-@api.route('/register/<int:id>', methods=['PUT'])
-def update_register_2(id): 
-    usuario = User.query.get(id)
-    if usuario is None:
-        raise APIException('Usuario no encontrado', status_code=403)
-    request_body = request.json.get()
-    if "password" in request_body:
-        usuario.password = register_body["password"]
-    db.session.commit()
-    return jsonify("El usuario se ha actualizado correctamente"), 200
-
-
 @api.route('/register', methods=['PUT'])
 def update_register_3(): 
 
     email = request.json.get("email", None)
     
     password = request.json.get("password", None)
-
-####################### GET POST for USER ############################################
-#@api.route('/user', methods=['GET'])
-#def handle_hello():
-
-#    people_query = user.query.all()
-#    all_people = list(map(lambda x: x.serialize(), people_query))
-    
-#    return jsonify(all_people), 200
-
-#@api.route('/user', methods=['POST'])
-#def add_user():
- #   request_body_user = request.get_json()
-
- #   bobo = user( #este es el que tiene que ir en M
- #       email= request_body_user["email"],password=request_body_user["password"])
-
- #   db.session.add(bobo)
- #   db.session.commit()
-
- #   return jsonify(request_body_user), 200
-
-
-####################### GET POST for Registro ############################################
-
-@api.route('/registro', methods=['GET'])
-def registro_hello():
-
-    registro_query = registro.query.all()
-    all_registro = list(map(lambda x: x.serialize(), registro_query))
-    
-    return jsonify(all_registro), 200
-
-@api.route('/registro', methods=['POST'])
-def add_registro():
-    request_body_registro = request.get_json()
-
-    toto = registro( #este es el que tiene que ir en M
-     identificacion= request_body_registro["identificacion"],
-     nombre=request_body_registro["nombre"],
-     apellido1=request_body_registro["apellido1"],
-     apellido2=request_body_registro["apellido2"],
-     telefono=request_body_registro["telefono"],
-     fecha_nacimiento=request_body_registro["fecha_nacimiento"],
-     genero=request_body_registro["genero"], 
-     provincia=request_body_registro["provincia"])
-
-    db.session.add(toto)
-    db.session.commit()
-
-    return jsonify(request_body_registro), 200
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
 
     usuario = User.query.filter_by(email=email).first()   
 
@@ -169,10 +87,9 @@ def add_registro():
         print(usuario.password)
         db.session.commit()
         
-    return jsonify({"msg": "Los datos se han actualizado correctamente"}), 200   
-   
+    return jsonify({"msg": "Los datos se han actualizado correctamente"}), 200  
 
-#-----------------------------------------------------------#
+    #-----------------------------------------------------------#
 
 @api.route('/register/<string:email>', methods=['DELETE'])
 def delete_register(email):    
@@ -234,4 +151,34 @@ def protected():
     return jsonify({"id":usuario.id, "email": usuario.email}), 200
 
 
-#-----------------------------------------------------------#
+@api.route('/registro', methods=['GET'])
+def registro_hello():
+
+    registro_query = registro.query.all()
+    all_registro = list(map(lambda x: x.serialize(), registro_query))
+    
+    return jsonify(all_registro), 200
+
+@api.route('/registro', methods=['POST'])
+def add_registro():
+    request_body_registro = request.get_json()
+
+    toto = registro( #este es el que tiene que ir en M
+     identificacion= request_body_registro["identificacion"],
+     nombre=request_body_registro["nombre"],
+     apellido1=request_body_registro["apellido1"],
+     apellido2=request_body_registro["apellido2"],
+     telefono=request_body_registro["telefono"],
+     fecha_nacimiento=request_body_registro["fecha_nacimiento"],
+     genero=request_body_registro["genero"], 
+     provincia=request_body_registro["provincia"])
+
+    db.session.add(toto)
+    db.session.commit()
+
+    return jsonify(request_body_registro), 200
+# Create a route to authenticate your users and return JWTs. The
+# create_access_token() function is used to actually generate the JWT.
+
+   
+
