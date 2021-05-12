@@ -211,6 +211,7 @@ def registro_hello():
 
 @api.route('/registro', methods=['POST'])
 def add_registro():
+    
     request_body_registro = request.get_json()
 
     toto = registro( 
@@ -227,30 +228,9 @@ def add_registro():
      distrito=request_body_registro["distrito"],
      dir_exacta=request_body_registro["dir_exacta"])
 
-#----------------
-    if tipo_idnt and nombre and apellido1 and identificacion and telefono == " ":
-        return jsonify({"msg": "Por favor, complete los datos de identificación"}), 400
-    if tipo_idnt or nombre or apellido1 or identificacion or telefono == " ":
-        return jsonify({"msg": "Por favor, complete los datos de identificación"}), 400
-    if tipo_idnt or nombre or apellido1 or identificacion or telefono == "":
-        return jsonify({"msg": "Por favor, complete los datos de identificación"}), 400
-    if identificación is None:
-        return jsonify({"msg": "Por favor, agregue una identificación"}), 400
+    db.session.add(toto)
+    db.session.commit()
 
-    usuario = registro.query.filter_by(identificacion=identificacion).first()
-    
-    if usuario:
-        return jsonify({"msg": "Ya existe este usuario en la BD"}),401
-    else:
-           
-        db.session.add(toto)
-        db.session.commit()
-        return jsonify({"msg": "Usuario creado satisfactorimente"}), 200    
-
-#-----------------
-    #db.session.add(toto)
-    #db.session.commit()
-
-    #return jsonify(request_body_registro), 200
+    return jsonify(request_body_registro), 200
    #Karla agrega campos que faltan del formulario 12-05-2021 (tipo_idnt, dir_exacta, canton, distrito)
 #-----------------------------------------------------------#
