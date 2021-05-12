@@ -187,7 +187,7 @@ export const Registro = () => {
 	};
 
 	return (
-		<Container className="mt-5 borde">
+		<Container className="mt-5 borde mb-5">
 			<Row>
 				<Form className="mt-5 regis-style">
 					<h2>¡Regístrese en Empleo 45+!</h2>
