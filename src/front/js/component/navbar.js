@@ -11,16 +11,6 @@ export const Navbars = () => {
 	const handleShow = () => setShow(true);
 
 	return (
-		// <nav className="navbar navbar-light bg-light mb-3">
-		//  <Link to="/">
-		//      <span className="navbar-brand mb-0 h1">React Boilerplate</span>
-		//  </Link>
-		//  <div className="ml-auto">
-		//      <Link to="/demo">
-		//          <button className="btn btn-primary">Check the Context in action</button>
-		//      </Link>
-		//  </div>
-		// </nav>
 		<>
 			<Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top">
 				<Navbar.Brand href="/">
@@ -31,15 +21,7 @@ export const Navbars = () => {
 					<Nav className="mr-auto">
 						<Nav.Link href="/">Inicio</Nav.Link>
 						<Nav.Link href="/listaempleos">Empleos Disponibles</Nav.Link>
-						<NavDropdown title="Tips" id="collasible-nav-dropdown">
-							<NavDropdown.Item href="#action/3.1">Hoja de vida</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">Entrevista</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.3">Otro</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-						</NavDropdown>
 					</Nav>
-
 					<Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
 						<Modal.Header closeButton>
 							<Modal.Title>Ingresar</Modal.Title>
