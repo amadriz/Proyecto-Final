@@ -27,7 +27,7 @@ class registro(db.Model):
     nombre = db.Column(db.String(120), unique=False, nullable=True)
     apellido1 = db.Column(db.String(120), unique=False, nullable=True)
     apellido2 = db.Column(db.String(120), unique=False, nullable=True)
-    telefono = db.Column(db.Integer, unique=True, nullable=True)
+    telefono = db.Column(db.Integer, unique=False, nullable=True)
     fecha_nacimiento = db.Column(db.String, unique=False, nullable=False)
     genero = db.Column(db.String(120), unique=False, nullable=True)
     estado_civil = db.Column(db.String(120), unique=False, nullable=True)
@@ -59,4 +59,4 @@ class registro(db.Model):
             # do not serialize the password, its a security breach
         }
 
-#Karla actualiza la fecha, esta puede repetirse por otro usuario del sistema por lo tanto va en unique: false
+#Karla actualiza la fecha, telefono, son datos que se pueden repetirse por otro usuario del sistema por lo tanto va en unique: false
