@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch("https://3001-jade-anglerfish-mhl2jtfb.ws-us04.gitpod.io/api/token", opts);
+					const resp = await fetch("https://empleo45-proyecto-final.herokuapp.com/api/token", opts);
 					if (resp.status !== 200) {
 						alert("Por favor, complete los campos solicitados para continuar");
 						return false;
