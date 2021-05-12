@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 # -Karla- se importa OS
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, registro
+from api.models import db, User, Registro
 from api.utils import generate_sitemap, APIException
 
 # -Karla- Se importó desde Basic Usage
@@ -202,7 +202,7 @@ def protected():
 @api.route('/registro', methods=['GET'])
 def registro_hello():
 
-    registro_query = registro.query.all()
+    registro_query = Registro.query.all()
     all_registro = list(map(lambda x: x.serialize(), registro_query))
     
     return jsonify(all_registro), 200
@@ -214,7 +214,7 @@ def add_registro():
     
     request_body_registro = request.get_json()
 
-    toto = registro( 
+    toto = Registro( 
      tipo_idnt = request_body_registro["tipo_idnt"],
      identificacion= request_body_registro["identificacion"],
      nombre=request_body_registro["nombre"],
@@ -223,6 +223,7 @@ def add_registro():
      telefono=request_body_registro["telefono"],
      fecha_nacimiento=request_body_registro["fecha_nacimiento"],
      genero=request_body_registro["genero"], 
+     estado_civil=request_body_registro["estado_civil"],
      provincia=request_body_registro["provincia"],
      canton=request_body_registro["canton"],
      distrito=request_body_registro["distrito"],

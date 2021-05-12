@@ -20,7 +20,7 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-class registro(db.Model):
+class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     identificacion = db.Column(db.Integer, unique=True, nullable=True)
     tipo_idnt = db.Column(db.String(120), unique=False, nullable=True, default="Pasaporte")
@@ -38,7 +38,7 @@ class registro(db.Model):
 
 
     def __repr__(self):
-       return '<registro %r>' % self.nombre
+       return '<Registro %r>' % self.nombre
 
     def serialize(self):
        return {
