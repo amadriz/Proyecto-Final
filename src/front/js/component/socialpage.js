@@ -1,9 +1,13 @@
-import React from "react";
-import { Card, Image, Col, Table, Dropdown, Button, ButtonGroup } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
+
+import { Card, Image, Col, Table, Dropdown, Button, ButtonGroup, DropdownButton } from "react-bootstrap";
 
 import useravatar from "../../img/rigo-baby.jpg";
 
 export const SocialPage = () => {
+	const { store, actions } = useContext(Context);
+	console.log(store.favorites);
 	return (
 		<>
 			<div className="profile-card mt-5">
@@ -42,7 +46,9 @@ export const SocialPage = () => {
 						/>
 					</Col>
 					<Card.Body style={{ position: "relative", bottom: "90px" }}>
-						<Card.Title style={{ margin: "0", color: "#00000" }}>Jose Luis Rodriguez Vargas</Card.Title>
+						<Card.Title style={{ margin: "0", color: "#00000" }}>
+							Jose Luis Rodriguez Vargas <span>{JSON.stringify(store.favorites)}</span>
+						</Card.Title>
 						<Table>
 							<thead>
 								<tr>
@@ -68,16 +74,17 @@ export const SocialPage = () => {
 								<tr>
 									<td>
 										<ButtonGroup className="mr-2">
-											<Dropdown>
-												<Dropdown.Toggle variant="info" id="dropdown-basic">
-													Aplicaciones
-												</Dropdown.Toggle>
-												<Dropdown.Menu>
-													<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-													<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-													<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-												</Dropdown.Menu>
-											</Dropdown>{" "}
+											<DropdownButton
+												id="dropdown-basic-button"
+												title={`Favoritos ${store.favorites.length}`}>
+												{store.favorites.map((item, index) => {
+													return (
+														<Dropdown.Item key={index} href="#">
+															{item.title}
+														</Dropdown.Item>
+													);
+												})}
+											</DropdownButton>
 										</ButtonGroup>
 										<ButtonGroup className="mr-2">
 											<Button variant="info" style={{ position: "relative" }}>

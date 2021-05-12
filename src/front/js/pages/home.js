@@ -10,6 +10,7 @@ import logo3 from "../../img/logo3.png";
 import logo4 from "../../img/logo4.png";
 import logo5 from "../../img/logo5.png";
 import logo6 from "../../img/logo6.png";
+import logo7 from "../../img/logo7.png";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -70,7 +71,7 @@ export const Home = () => {
 						<img className="img-fluid w-10" src={logo3} />
 					</Col>
 					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
-						<img className="img-fluid w-10" src={logo6} />
+						<img className="img-fluid w-10" src={logo7} />
 					</Col>
 					<Col sm={4} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
 						<img className="img-fluid w-10" src={logo2} />
