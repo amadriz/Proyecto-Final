@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 # -Karla- se importa OS
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, registro
 from api.utils import generate_sitemap, APIException
 
 # -Karla- Se importó desde Basic Usage
@@ -93,7 +93,7 @@ def update_register_3():
     email = request.json.get("email", None)
     
     password = request.json.get("password", None)
-=======
+
 ####################### GET POST for USER ############################################
 #@api.route('/user', methods=['GET'])
 #def handle_hello():
