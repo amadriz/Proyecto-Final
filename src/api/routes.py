@@ -168,6 +168,7 @@ def add_registro():
     request_body_registro = request.get_json()
 
     toto = registro( 
+     tipo_idnt = request_body_registro["tipo_idnt"],
      identificacion= request_body_registro["identificacion"],
      nombre=request_body_registro["nombre"],
      apellido1=request_body_registro["apellido1"],
@@ -175,11 +176,14 @@ def add_registro():
      telefono=request_body_registro["telefono"],
      fecha_nacimiento=request_body_registro["fecha_nacimiento"],
      genero=request_body_registro["genero"], 
-     provincia=request_body_registro["provincia"])
+     provincia=request_body_registro["provincia"],
+     canton=request_body_registro["canton"],
+     distrito=request_body_registro["distrito"],
+     dir_exacta=request_body_registro["dir_exacta"])
 
     db.session.add(toto)
     db.session.commit()
 
     return jsonify(request_body_registro), 200
-   
+   #Karla agrega campos que faltan del formulario 12-05-2021 (tipo_idnt, dir_exacta, canton, distrito)
 #-----------------------------------------------------------#
