@@ -75,7 +75,7 @@ export const Login = () => {
 	};
 	return (
 		<>
-			<Container className="mt-auto vs-container">
+			<Container className="mt-auto vs-container mb-5">
 				<Row className="mt-5">
 					<Col sm={12}>
 						<h1>Ingrese a su perfil</h1>

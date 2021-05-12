@@ -23,23 +23,27 @@ const renderUrl = (val, row) => {
 
 // Esta función agrega un custom cel al datable con el icono para favorito y funcion para guardar favoritos
 const renderFavorito = row => {
+	const { store, actions } = useContext(Context);
+	// return store.listaEmpleos.map((item, index) => {
 	return tablaJobs.map((item, index) => {
 		return (
 			// <Button className="btn btn-outline-success" onClick={() => alert("Agregado a Favoritos")}>
+			// <Button
+			// 	key={index}
+			// 	className="btn btn-outline-success"
+			// 	onClick={() => alert(`Favorito guardado ` + item.title)}>
+			// 	<i className="fas fa-heart" />
+			// </Button>
 			<Button
 				key={index}
 				className="btn btn-outline-success"
 				onClick={() => alert(`Favorito guardado ` + item.title)}>
+				{/* onClick={() => actions.setFavorites(item.title)}> */}
+				{/* FUNCION TERNARIA PARA CAMBIAR EL BOTON DEPENDIENDO SI EXISTE O NO EL TITLE */}
 				<i className="fas fa-heart" />
 			</Button>
 		);
 	});
-};
-
-let favo = [];
-
-const favoritos = () => {
-	return console.log("works");
 };
 
 const columnas = [
@@ -99,6 +103,7 @@ export const ListaEmpleos = () => {
 					<div className="carousel-caption d-md-block captionSliderEquipo">
 						<h1 className="text-uppercase captionSliderUsadas text-uppercase captionSliderUsadas">
 							Lista de Empleos
+							{/* <span>{JSON.stringify(store.favorites)}</span> */}
 						</h1>
 					</div>
 				</div>
