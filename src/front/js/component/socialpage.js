@@ -1,9 +1,13 @@
-import React from "react";
-import { Card, Image, Col, Table, Dropdown, Button, ButtonGroup } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
+import { Card, Image, Col, Table, Dropdown, Button, ButtonGroup, DropdownButton } from "react-bootstrap";
 
 import useravatar from "../../img/rigo-baby.jpg";
 
 export const SocialPage = () => {
+	const { store, actions } = useContext(Context);
+	console.log(store.favorites);
+
 	return (
 		<>
 			<div className="profile-card mt-5">
@@ -68,22 +72,15 @@ export const SocialPage = () => {
 								<tr>
 									<td>
 										<ButtonGroup className="mr-2">
-											<Dropdown>
-												<Dropdown.Toggle variant="info" id="dropdown-basic">
-													Aplicaciones
-												</Dropdown.Toggle>
-												<Dropdown.Menu>
-													<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-													<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-													<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-												</Dropdown.Menu>
-											</Dropdown>{" "}
+											<Button variant="info" style={{ position: "relative" }}>
+												Editar
+											</Button>
 										</ButtonGroup>
-										<ButtonGroup className="mr-2">
+										{/* <ButtonGroup className="mr-2">
 											<Button variant="info" style={{ position: "relative" }}>
 												Update
 											</Button>
-										</ButtonGroup>
+										</ButtonGroup> */}
 									</td>
 
 									<td colSpan="2">
