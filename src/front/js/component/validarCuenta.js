@@ -40,13 +40,12 @@ export const ValidarCuenta = () => {
 					<Col sm={12}>
 						<h1>¡Nueva contraseña!</h1>
 						<hr />
-
 						<div>
-							<Form onSubmit={handleClick}>
+							<Form className="mt-5" onSubmit={handleClick}>
 								<div>
-									<label>Dirección de correo electrónico</label>
+									{/*<label className="col-sm-12 vs-label">Dirección de correo electrónico</label>*/}
 									<input
-										className="btnEmail"
+										className="btnInput"
 										type="email"
 										id="inputEmail"
 										value={email}
@@ -55,13 +54,13 @@ export const ValidarCuenta = () => {
 										required="required"></input>
 								</div>
 								<div>
-									<label>Ingrese la nueva contraseña</label>
+									{/*<label className="col-sm-12 vs-label">Ingrese la nueva contraseña</label>*/}
 									<input
-										className="btnEmail"
+										className="btnInput"
 										type="password"
 										id="inputPassword"
 										value={password}
-										placeholder="Por favor, ingrese su nueva contraseña"
+										placeholder="Por favor, ingrese su NUEVA contraseña"
 										onChange={e => setContraseña(e.target.value)}
 										required="required"></input>
 								</div>
@@ -72,6 +71,18 @@ export const ValidarCuenta = () => {
 							{auth ? <Redirect to="/login" /> : null}
 						</div>
 					</Col>
+					<div className="min-footer">
+						<Link to="/login">
+							<Button variant="btn btn-link" type="submit">
+								Regresar al Inicio de Sesión
+							</Button>
+						</Link>
+						<Link to="/registro">
+							<Button variant="btn  btn-link" type="submit">
+								¿No tienes cuenta? Regístrese aquí
+							</Button>
+						</Link>
+					</div>
 				</Row>
 			</Container>
 		</>
@@ -110,7 +121,7 @@ export const ValidarCuenta = () => {
                                 </Form.Label>
                                 
 								<Form.Control
-									className="btnEmail"
+									className="btnInput"
 									type="email"
 									placeholder="Correo Electrónico"
 									id="email"
