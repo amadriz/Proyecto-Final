@@ -89,7 +89,7 @@ export const Registro = () => {
 			<Row>
 				<div>
 					<Form className="mt-5 regis-style" onSubmit={handleClick}>
-						<h2>¡Regístrese en Empleo 45+!</h2>
+						<h2>Regístrese en Empleo 45+</h2>
 						<h3>Datos de Contacto</h3>
 						<hr />
 						<Form.Row>
