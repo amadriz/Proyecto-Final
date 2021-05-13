@@ -6,8 +6,6 @@ import misEstilos from "../../styles/misEstilos.css";
 export const Registro = () => {
 	const [auth, setAuth] = useState(false);
 	let [tipo_idnt, setIdnt] = useState("");
-	let [residente, setResidente] = useState("");
-	let [pasaporte, setPasaporte] = useState("");
 	let [identificacion, setId] = useState("");
 	let [nombre, setNombre] = useState("");
 	let [apellido1, setApellido1] = useState("");
@@ -44,7 +42,34 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-indigo-krill-8ixl49xz.ws-us04.gitpod.io/api/registro", {
+		fetch("https://3001-maroon-flea-pas0jdhb.ws-us04.gitpod.io/api/registro", {
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(resp => resp.json())
+			.then(data => {
+				console.log("Soy data:" + data);
+				setAuth(true);
+			})
+			.catch(error => console.log("Cargando un error desde el Backend", error));
+	};
+
+	const handleClick2 = e => {
+		e.preventDefault();
+
+		const body = {
+			id: identificacion,
+			email: email,
+			password: password,
+			is_active: true
+		};
+
+		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
+
+		fetch("https://3001-maroon-flea-pas0jdhb.ws-us04.gitpod.io/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -68,13 +93,20 @@ export const Registro = () => {
 						<h3>Datos de Contacto</h3>
 						<hr />
 						<Form.Row>
-							<Form.Group className="row p-1" controlId="formGridCity">
-								<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
+							<Form.Group className="row p-1" controlId="formBasicSelect">
+								<Form.Label className="col-sm-12">Tipo de identificación:</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Select as="select" defaultValue="Seleccione" id="tipo_idnt" value={tipo_idnt}>
-										<option value="Residente">Residente</option>
-										<option value="Pasaporte">Pasaporte</option>
-									</Form.Select>
+									<Form.Control
+										as="select"
+										value={tipo_idnt}
+										onChange={e => {
+											console.log("e.target.value", e.target.value);
+											setIdnt(e.target.value);
+										}}>
+										<option value="Nacional">Nacional</option>
+										<option value="Extranjero">Pasaporte</option>
+										<option value="Otro">Otro</option>
+									</Form.Control>
 								</Col>
 							</Form.Group>
 							<Form.Group className="row p-1" controlId="formGridState">
@@ -157,24 +189,37 @@ export const Registro = () => {
 						</Form.Row>
 						{/* ******** */}
 						<Form.Row>
-							<Form.Group className="row p-1" controlId="formGridState">
-								<Form.Label className="col-sm-12">Género</Form.Label>
+							<Form.Group className="row p-1" controlId="formBasicSelect">
+								<Form.Label className="col-sm-12">Género:</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control as="select" defaultValue="Eliga el Género" id="genero">
-										<option value={genero}>Femenino</option>
-										<option value={genero}>Masculino</option>
-										<option value={genero}>Otros</option>
+									<Form.Control
+										as="select"
+										value={genero}
+										onChange={e => {
+											console.log("e.target.value", e.target.value);
+											setGenero(e.target.value);
+										}}>
+										<option value="Femenino">Femenino</option>
+										<option value="Masculino">Masculino</option>
+										<option value="No definido">No definido</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
 
-							<Form.Group className="row p-1" controlId="formGridState">
-								<Form.Label className="col-sm-12">Estado Civil</Form.Label>
+							<Form.Group className="row p-1" controlId="formBasicSelect">
+								<Form.Label className="col-sm-12">Estado Civil:</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control as="select" defaultValue="Estado Civil" id="estado_civil">
-										<option value={estado_civil}>Soltero/a</option>
-										<option value={estado_civil}>Casado/a</option>
-										<option value={estado_civil}>Viudo/a</option>
+									<Form.Control
+										as="select"
+										value={estado_civil}
+										onChange={e => {
+											console.log("e.target.value", e.target.value);
+											setEC(e.target.value);
+										}}>
+										<option value="Soltero/a">Soltero/a</option>
+										<option value="Casado/a">Casado/a</option>
+										<option value="Divorciado/a">Divorciado/a</option>
+										<option value="Viudo/a">Viudo/a</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
@@ -196,17 +241,23 @@ export const Registro = () => {
 
 						{/* LUGAR */}
 						<Form.Row>
-							<Form.Group className="row p-1" controlId="formGridCity">
-								<Form.Label className="col-sm-12">Provincia</Form.Label>
+							<Form.Group className="row p-1" controlId="formBasicSelect">
+								<Form.Label className="col-sm-12">Provincia:</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control as="select" defaultValue="Provincia" name="provincia" id="provincia">
-										<option value={provincia}>Alajuela</option>
-										<option value={provincia}>Cartago</option>
-										<option value={provincia}>Guanacaste</option>
-										<option value={provincia}>Heredia</option>
-										<option value={provincia}>Limón</option>
-										<option value={provincia}>Puntarenas</option>
-										<option value={provincia}>San José</option>
+									<Form.Control
+										as="select"
+										value={provincia}
+										onChange={e => {
+											console.log("e.target.value", e.target.value);
+											setProvincia(e.target.value);
+										}}>
+										<option value="San José">San José</option>
+										<option value="Alajuela">Alajuela</option>
+										<option value="Cartago">Cartago</option>
+										<option value="Heredia">Heredia</option>
+										<option value="Guanacaste">Guanacaste</option>
+										<option value="Puntarenas">Puntarenas</option>
+										<option value="Limón">Limón</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
@@ -252,45 +303,46 @@ export const Registro = () => {
 								/>
 							</Col>
 						</Form.Group>
+						<Form className="mt-5 regis-style" onSubmit={handleClick2}>
+							<h3>Datos de Acceso a la plataforma</h3>
+							<hr />
+							{/* CORREO ELECTRONICO */}
+							<Form.Row>
+								<Form.Group className="row p-1" controlId="formGridEmail">
+									<Form.Label className="col-sm-12">Correo Electrónico</Form.Label>
+									<Col className="col-sm-12">
+										<Form.Control
+											type="text"
+											id="inputEmail"
+											value={email}
+											placeholder="Ingrese su correo electrónico"
+											onChange={e => setEmail(e.target.value)}
+										/>
+									</Col>
+								</Form.Group>
 
-						<h3>Datos de Acceso a la plataforma</h3>
-						<hr />
-						{/* CORREO ELECTRONICO */}
-						<Form.Row>
-							<Form.Group className="row p-1" controlId="formGridEmail">
-								<Form.Label className="col-sm-12">Correo Electrónico</Form.Label>
-								<Col className="col-sm-12">
-									<Form.Control
-										type="text"
-										id="inputEmail"
-										value={email}
-										placeholder="Ingrese su correo electrónico"
-										onChange={e => setEmail(e.target.value)}
-									/>
-								</Col>
-							</Form.Group>
-
-							<Form.Group className="row p-1" controlId="formGridPassword">
-								<Form.Label className="col-sm-12">Contraseña</Form.Label>
-								<Col className="col-sm-12">
-									<Form.Control
-										type="password"
-										id="inputPasword"
-										value={password}
-										placeholder="Ingrese su password"
-										onChange={e => setPassword(e.target.value)}
-									/>
-								</Col>
-							</Form.Group>
-						</Form.Row>
-						<button type="submit" className="btn btn-outline-primary float-right ml-1">
-							Registrarme
-						</button>
-						<Link to="/">
-							<button type="submit" className="btn btn-outline-primary  float-right ml-1">
-								Cancelar
+								<Form.Group className="row p-1" controlId="formGridPassword">
+									<Form.Label className="col-sm-12">Contraseña</Form.Label>
+									<Col className="col-sm-12">
+										<Form.Control
+											type="password"
+											id="inputPasword"
+											value={password}
+											placeholder="Ingrese su password"
+											onChange={e => setPassword(e.target.value)}
+										/>
+									</Col>
+								</Form.Group>
+							</Form.Row>
+							<button type="submit" className="btn btn-outline-primary float-right ml-1">
+								Registrarme
 							</button>
-						</Link>
+							<Link to="/">
+								<button type="submit" className="btn btn-outline-primary  float-right ml-1">
+									Cancelar
+								</button>
+							</Link>
+						</Form>
 					</Form>
 					{auth ? <Redirect to="/login" /> : null}
 				</div>

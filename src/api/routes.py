@@ -20,7 +20,8 @@ api = Blueprint('api', __name__)
 #-----------------------------------------------------------#
 
 @api.route("/token", methods=["POST"])
-def create_token():    
+def create_token():  
+      
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     print(email, password)
@@ -141,7 +142,7 @@ def del_register():
 
 @api.route("/register", methods=["POST"])
 def register_user():
-    
+    id = request.json.get("identificacion", None)
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     is_active = request.json.get("is_active", None)
@@ -169,7 +170,7 @@ def register_user():
     if usuario:
         return jsonify({"msg": "Ya existe este usuario en la BD"}),401
     else:
-        user_nuevo = User(email=email, password=password, is_active=is_active)
+        user_nuevo = User(id=id, email=email, password=password, is_active=is_active)
     
         db.session.add(user_nuevo)
         db.session.commit()
