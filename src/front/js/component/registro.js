@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Container, Row, Col, Form, Group, Button, Text, Alert } from "react-bootstrap";
+import { Container, Row, Col, Form, Group, Button, Text, Alert, Select } from "react-bootstrap";
 import misEstilos from "../../styles/misEstilos.css";
 
 export const Registro = () => {
@@ -71,14 +71,10 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridCity">
 								<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control
-										as="select"
-										defaultValue="Seleccione"
-										id="tipo_idnt"
-										value="tipo_idnt">
-										<option>Residente</option>
-										<option>Pasaporte</option>
-									</Form.Control>
+									<Form.Select as="select" defaultValue="Seleccione" id="tipo_idnt" value={tipo_idnt}>
+										<option value="Residente">Residente</option>
+										<option value="Pasaporte">Pasaporte</option>
+									</Form.Select>
 								</Col>
 							</Form.Group>
 							<Form.Group className="row p-1" controlId="formGridState">
