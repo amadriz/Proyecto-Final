@@ -16,9 +16,6 @@ import {
 import useravatar from "../../img/rigo-baby.jpg";
 
 export const SocialPage = () => {
-	const { store, actions } = useContext(Context);
-	console.log(store.favorites);
-
 	return (
 		<>
 			<Container fluid className="mt-3 mb-5">
