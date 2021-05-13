@@ -6,6 +6,8 @@ import misEstilos from "../../styles/misEstilos.css";
 export const Registro = () => {
 	const [auth, setAuth] = useState(false);
 	let [tipo_idnt, setIdnt] = useState("");
+	let [residente, setResidente] = useState("");
+	let [pasaporte, setPasaporte] = useState("");
 	let [identificacion, setId] = useState("");
 	let [nombre, setNombre] = useState("");
 	let [apellido1, setApellido1] = useState("");
@@ -69,9 +71,9 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridCity">
 								<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control as="select" defaultValue="Seleccione" id="tipo_idnt">
-										<option value={tipo_idnt}>Residente</option>
-										<option value={tipo_idnt}>Pasaporte</option>
+									<Form.Control as="select" defaultValue="Seleccione" name={tipo_idnt} id="tipo_idnt">
+										<option value={residente}>Residente</option>
+										<option value={pasaporte}>Pasaporte</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
