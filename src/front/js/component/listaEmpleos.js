@@ -22,26 +22,23 @@ const renderUrl = (val, row) => {
 };
 
 // Esta función agrega un custom cel al datable con el icono para favorito y funcion para guardar favoritos
-const renderFavorito = () => {
+const renderFavorito = val => {
+	console.log(val);
+
 	const { store, actions } = useContext(Context);
 	return store.listaEmpleos.map((item, index) => {
 		//return tablaJobs.map((item, index) => {
-		return (
-			// <Button className="btn btn-outline-success" onClick={() => alert("Agregado a Favoritos")}>
-			// <Button
-			// 	key={index}
-			// 	className="btn btn-outline-success"
-			// 	onClick={() => alert(`Favorito guardado ` + item.title)}>
-			// 	<i className="fas fa-heart" />
-			// </Button>
-			<Button
-				key={index}
-				className="btn btn-outline-success"
-				// onClick={() => alert(`Favorito guardado ` + item.title)}>
-				onClick={() => actions.setFavorites(item.title)}>
-				<i className="fas fa-heart" />
-			</Button>
-		);
+		if (val.title == item.title) {
+			return (
+				<Button
+					key={index}
+					className="btn btn-outline-success"
+					// onClick={() => alert(`Favorito guardado ` + item.title)}>
+					onClick={() => actions.setFavorites(item.title)}>
+					<i className="fas fa-heart" />
+				</Button>
+			);
+		}
 	});
 };
 
