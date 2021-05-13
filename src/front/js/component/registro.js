@@ -44,7 +44,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-black-halibut-8lvff9kr.ws-us04.gitpod.io/api/registro", {
+		fetch("https://3001-indigo-krill-8ixl49xz.ws-us04.gitpod.io/api/registro", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -71,13 +71,16 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridCity">
 								<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control as="select" defaultValue="Seleccione" name={tipo_idnt} id="tipo_idnt">
-										<option value={residente}>Residente</option>
-										<option value={pasaporte}>Pasaporte</option>
+									<Form.Control
+										as="select"
+										defaultValue="Seleccione"
+										id="tipo_idnt"
+										value="tipo_idnt">
+										<option>Residente</option>
+										<option>Pasaporte</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
-
 							<Form.Group className="row p-1" controlId="formGridState">
 								<Form.Label className="col-sm-12">Número de identificación</Form.Label>
 								<Col className="col-sm-12">
