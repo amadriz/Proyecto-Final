@@ -37,12 +37,13 @@ export const Registro = () => {
 			provincia: provincia,
 			canton: canton,
 			distrito: distrito,
-			dir_exacta: dir_exacta
+			dir_exacta: dir_exacta,
+			email: email
 		};
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-maroon-flea-pas0jdhb.ws-us04.gitpod.io/api/registro", {
+		fetch("https://3001-lavender-ermine-bedu9v2t.ws-us04.gitpod.io/api/registro", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -69,7 +70,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-maroon-flea-pas0jdhb.ws-us04.gitpod.io/api/register", {
+		fetch("https://3001-lavender-ermine-bedu9v2t.ws-us04.gitpod.io/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -103,6 +104,7 @@ export const Registro = () => {
 											console.log("e.target.value", e.target.value);
 											setIdnt(e.target.value);
 										}}>
+										<option value="">Seleccione</option>
 										<option value="Nacional">Nacional</option>
 										<option value="Extranjero">Pasaporte</option>
 										<option value="Otro">Otro</option>
@@ -199,6 +201,7 @@ export const Registro = () => {
 											console.log("e.target.value", e.target.value);
 											setGenero(e.target.value);
 										}}>
+										<option value="">Seleccione</option>
 										<option value="Femenino">Femenino</option>
 										<option value="Masculino">Masculino</option>
 										<option value="No definido">No definido</option>
@@ -216,6 +219,7 @@ export const Registro = () => {
 											console.log("e.target.value", e.target.value);
 											setEC(e.target.value);
 										}}>
+										<option value="">Seleccione</option>
 										<option value="Soltero/a">Soltero/a</option>
 										<option value="Casado/a">Casado/a</option>
 										<option value="Divorciado/a">Divorciado/a</option>
@@ -251,6 +255,7 @@ export const Registro = () => {
 											console.log("e.target.value", e.target.value);
 											setProvincia(e.target.value);
 										}}>
+										<option value="">Seleccione</option>
 										<option value="San José">San José</option>
 										<option value="Alajuela">Alajuela</option>
 										<option value="Cartago">Cartago</option>

@@ -228,7 +228,8 @@ def add_registro():
      provincia=request_body_registro["provincia"],
      canton=request_body_registro["canton"],
      distrito=request_body_registro["distrito"],
-     dir_exacta=request_body_registro["dir_exacta"])
+     dir_exacta=request_body_registro["dir_exacta"],
+     email=request_body_registro["email"])
 
     db.session.add(toto)
     db.session.commit()

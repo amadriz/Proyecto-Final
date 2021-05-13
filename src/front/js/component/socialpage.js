@@ -12,7 +12,6 @@ import {
 	ButtonGroup,
 	DropdownButton
 } from "react-bootstrap";
-
 import useravatar from "../../img/rigo-baby.jpg";
 
 export const SocialPage = () => {
