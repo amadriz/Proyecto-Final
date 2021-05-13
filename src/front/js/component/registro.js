@@ -69,13 +69,9 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridCity">
 								<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control
-										as="select"
-										defaultValue="Seleccione"
-										id="tipo_idnt"
-										value={tipo_idnt}>
-										<option>Residente</option>
-										<option>Pasaporte</option>
+									<Form.Control as="select" defaultValue="Seleccione" id="tipo_idnt">
+										<option value={tipo_idnt}>Residente</option>
+										<option value={tipo_idnt}>Pasaporte</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
@@ -163,10 +159,10 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridState">
 								<Form.Label className="col-sm-12">Género</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control as="select" defaultValue="Eliga el Género" id="genero" value={genero}>
-										<option>Femenino</option>
-										<option>Masculino</option>
-										<option>Otros</option>
+									<Form.Control as="select" defaultValue="Eliga el Género" id="genero">
+										<option value={genero}>Femenino</option>
+										<option value={genero}>Masculino</option>
+										<option value={genero}>Otros</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
@@ -174,14 +170,10 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridState">
 								<Form.Label className="col-sm-12">Estado Civil</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control
-										as="select"
-										defaultValue="Estado Civil"
-										id="estado_civil"
-										value={estado_civil}>
-										<option>Soltero/a</option>
-										<option>Casado/a</option>
-										<option>Viudo/a</option>
+									<Form.Control as="select" defaultValue="Estado Civil" id="estado_civil">
+										<option value={estado_civil}>Soltero/a</option>
+										<option value={estado_civil}>Casado/a</option>
+										<option value={estado_civil}>Viudo/a</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
@@ -206,19 +198,14 @@ export const Registro = () => {
 							<Form.Group className="row p-1" controlId="formGridCity">
 								<Form.Label className="col-sm-12">Provincia</Form.Label>
 								<Col className="col-sm-12">
-									<Form.Control
-										as="select"
-										defaultValue="Provincia"
-										name="provincia"
-										id="provincia"
-										value={provincia}>
-										<option>Alajuela</option>
-										<option>Cartago</option>
-										<option>Guanacaste</option>
-										<option>Heredia</option>
-										<option>Limón</option>
-										<option>Puntarenas</option>
-										<option>San José</option>
+									<Form.Control as="select" defaultValue="Provincia" name="provincia" id="provincia">
+										<option value={provincia}>Alajuela</option>
+										<option value={provincia}>Cartago</option>
+										<option value={provincia}>Guanacaste</option>
+										<option value={provincia}>Heredia</option>
+										<option value={provincia}>Limón</option>
+										<option value={provincia}>Puntarenas</option>
+										<option value={provincia}>San José</option>
 									</Form.Control>
 								</Col>
 							</Form.Group>
