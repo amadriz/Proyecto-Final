@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 # -Karla- se importa OS
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, registro
+from api.models import db, User, Registro
 from api.utils import generate_sitemap, APIException
 
 # -Karla- Se importó desde Basic Usage
@@ -59,7 +59,7 @@ def get_register():
 #-----------------------------------------------------------#
 
 @api.route('/register', methods=['PUT'])
-def update_register_3(): 
+def update_register(): 
 
     email = request.json.get("email", None)
     
@@ -77,10 +77,16 @@ def update_register_3():
     if email == "":
         return jsonify({"msg": "Para continuar, agregue su email"}), 400
     
+    if email == " ":
+        return jsonify({"msg": "Para continuar, agregue su email"}), 400
+    
     if password is None:
         return jsonify({"msg": "Para continuar, agregue su nueva contraseña"}), 400
     
     if password == "":
+        return jsonify({"msg": "Para continuar, agregue su nueva contraseña"}), 400
+    
+    if password == " ":
         return jsonify({"msg": "Para continuar, agregue su nueva contraseña"}), 400
         
     else:
@@ -89,7 +95,7 @@ def update_register_3():
         
     return jsonify({"msg": "Los datos se han actualizado correctamente"}), 200  
 
-    #-----------------------------------------------------------#
+#-----------------------------------------------------------#
 
 @api.route('/register/<string:email>', methods=['DELETE'])
 def delete_register(email):    
@@ -102,6 +108,35 @@ def delete_register(email):
         print(email)
         return {'message': 'Usuario no encontrado'},404
 
+
+
+@api.route('/register', methods=['DELETE'])
+def del_register(): 
+
+    email = request.json.get("email", None)
+    
+    usuario = User.query.filter_by(email=email).first()   
+
+    print(email)
+    
+    if email is None:
+        return jsonify({"msg": "Para continuar, agregue su email"}), 400
+    
+    if email == "":
+        return jsonify({"msg": "Para continuar, agregue su email"}), 400
+    
+    if email == " ":
+        return jsonify({"msg": "Para continuar, agregue su email"}), 400
+    
+    if usuario:
+        db.session.delete(usuario)
+        db.session.commit()
+        return {'message':'Usuario Eliminado'},200
+    else:
+        print(email)
+        return {'message': 'Usuario no encontrado'},404
+
+
 #-----------------------------------------------------------#
 
 @api.route("/register", methods=["POST"])
@@ -112,10 +147,21 @@ def register_user():
     is_active = request.json.get("is_active", None)
     print(email, password)
     
+    if email and password == " ":
+        return jsonify({"msg": "Por favor, agregue un email y contraseña"}), 400
     if email is None:
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
+    if email == "":
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
+    if email == " ":
         return jsonify({"msg": "Por favor, agregue un email"}), 400
     if password is None:
         return jsonify({"msg": "Por favor, agregue una contraseña"}), 400
+    if password == "":
+        return jsonify({"msg": "Por favor, agregue una contraseña"}), 400
+    if password == " ":
+        return jsonify({"msg": "Por favor, agregue una contraseña"}), 400
+
     if is_active is None:
         return jsonify({"msg": "Active el usuario"}), 400
 
@@ -151,19 +197,25 @@ def protected():
     return jsonify({"id":usuario.id, "email": usuario.email}), 200
 
 
+#-----------------------------------------------------------#
+
 @api.route('/registro', methods=['GET'])
 def registro_hello():
 
-    registro_query = registro.query.all()
+    registro_query = Registro.query.all()
     all_registro = list(map(lambda x: x.serialize(), registro_query))
     
     return jsonify(all_registro), 200
 
+#-----------------------------------------------------------#
+
 @api.route('/registro', methods=['POST'])
 def add_registro():
+    
     request_body_registro = request.get_json()
 
-    toto = registro( #este es el que tiene que ir en M
+    toto = Registro( 
+     tipo_idnt = request_body_registro["tipo_idnt"],
      identificacion= request_body_registro["identificacion"],
      nombre=request_body_registro["nombre"],
      apellido1=request_body_registro["apellido1"],
@@ -171,14 +223,18 @@ def add_registro():
      telefono=request_body_registro["telefono"],
      fecha_nacimiento=request_body_registro["fecha_nacimiento"],
      genero=request_body_registro["genero"], 
-     provincia=request_body_registro["provincia"])
+     estado_civil=request_body_registro["estado_civil"],
+     provincia=request_body_registro["provincia"],
+     canton=request_body_registro["canton"],
+     distrito=request_body_registro["distrito"],
+     dir_exacta=request_body_registro["dir_exacta"])
 
     db.session.add(toto)
     db.session.commit()
 
     return jsonify(request_body_registro), 200
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
+   #Karla agrega campos que faltan del formulario 12-05-2021 (tipo_idnt, dir_exacta, canton, distrito)
+#-----------------------------------------------------------#
 
    
 

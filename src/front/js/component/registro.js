@@ -1,4 +1,319 @@
 import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { Container, Row, Col, Form, Group, Button, Text, Alert } from "react-bootstrap";
+import misEstilos from "../../styles/misEstilos.css";
+
+export const Registro = () => {
+	const [auth, setAuth] = useState(false);
+	let [tipo_idnt, setIdnt] = useState("");
+	let [identificacion, setId] = useState("");
+	let [nombre, setNombre] = useState("");
+	let [apellido1, setApellido1] = useState("");
+	let [apellido2, setApellido2] = useState("");
+	let [telefono, setTelefono] = useState("");
+	let [fecha_nacimiento, setFN] = useState("");
+	let [genero, setGenero] = useState("");
+	let [estado_civil, setEC] = useState("");
+	let [provincia, setProvincia] = useState("");
+	let [canton, setCanton] = useState("");
+	let [distrito, setDistrito] = useState("");
+	let [dir_exacta, setDE] = useState("");
+	let [email, setEmail] = useState("");
+	let [password, setPassword] = useState("");
+
+	const handleClick = e => {
+		e.preventDefault();
+
+		const body = {
+			tipo_idnt: tipo_idnt,
+			identificacion: identificacion,
+			nombre: nombre,
+			apellido1: apellido1,
+			apellido2: apellido2,
+			telefono: telefono,
+			fecha_nacimiento,
+			genero: genero,
+			estado_civil: estado_civil,
+			provincia: provincia,
+			canton: canton,
+			distrito: distrito,
+			dir_exacta: dir_exacta
+		};
+
+		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
+
+		fetch("https://3001-black-halibut-8lvff9kr.ws-us04.gitpod.io/api/registro", {
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(resp => resp.json())
+			.then(data => {
+				console.log("Soy data:" + data);
+				setAuth(true);
+			})
+			.catch(error => console.log("Cargando un error desde el Backend", error));
+	};
+
+	return (
+		<Container className="mt-5 borde mb-5">
+			<Row>
+				<div>
+					<Form className="mt-5 regis-style" onSubmit={handleClick}>
+						<h2>¡Regístrese en Empleo 45+!</h2>
+						<h3>Datos de Contacto</h3>
+						<hr />
+						<Form.Row>
+							<Form.Group className="row p-1" controlId="formGridCity">
+								<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										as="select"
+										defaultValue="Seleccione"
+										id="tipo_idnt"
+										value={tipo_idnt}>
+										<option>Residente</option>
+										<option>Pasaporte</option>
+									</Form.Control>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridState">
+								<Form.Label className="col-sm-12">Número de identificación</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputID"
+										value={identificacion}
+										placeholder="Ingrese su identificación"
+										onChange={e => setId(e.target.value)}
+										required="required"
+									/>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridZip">
+								<Form.Label className="col-sm-12">Fecha de nacimiento</Form.Label>
+								<Col className="col-sm-12">
+									<input
+										type="date"
+										id="inputFN"
+										value={fecha_nacimiento}
+										placeholder="Ingrese su fecha nacimiento"
+										onChange={e => setFN(e.target.value)}
+										required="required"></input>
+								</Col>
+							</Form.Group>
+						</Form.Row>
+
+						{/* NOMBRE Y APELLIDO */}
+						<Form.Row>
+							<Form.Group className="row p-1" controlId="formGridCity">
+								<Form.Label className="col-sm-12" sm="10">
+									Nombre
+								</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputNombre"
+										value={nombre}
+										placeholder="Ingrese su nombre"
+										onChange={e => setNombre(e.target.value)}
+										required="required"
+									/>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridState">
+								<Form.Label className="col-sm-12" sm="10">
+									Primer Apellido
+								</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputApe1"
+										value={apellido1}
+										placeholder="Ingrese su primer apellido"
+										onChange={e => setApellido1(e.target.value)}
+										required="required"
+									/>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridState">
+								<Form.Label className="col-sm-12" sm="10">
+									Segundo Apellido
+								</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputApe2"
+										value={apellido2}
+										placeholder="Ingrese su segundo apellido"
+										onChange={e => setApellido2(e.target.value)}
+										required="required"
+									/>
+								</Col>
+							</Form.Group>
+						</Form.Row>
+						{/* ******** */}
+						<Form.Row>
+							<Form.Group className="row p-1" controlId="formGridState">
+								<Form.Label className="col-sm-12">Género</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control as="select" defaultValue="Eliga el Género" id="genero" value={genero}>
+										<option>Femenino</option>
+										<option>Masculino</option>
+										<option>Otros</option>
+									</Form.Control>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridState">
+								<Form.Label className="col-sm-12">Estado Civil</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										as="select"
+										defaultValue="Estado Civil"
+										id="estado_civil"
+										value={estado_civil}>
+										<option>Soltero/a</option>
+										<option>Casado/a</option>
+										<option>Viudo/a</option>
+									</Form.Control>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridZip">
+								<Form.Label className="col-sm-12">Teléfono</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputTelefono"
+										value={telefono}
+										placeholder="Ingrese su número de teléfono"
+										onChange={e => setTelefono(e.target.value)}
+										required="required"
+									/>
+								</Col>
+							</Form.Group>
+						</Form.Row>
+
+						{/* LUGAR */}
+						<Form.Row>
+							<Form.Group className="row p-1" controlId="formGridCity">
+								<Form.Label className="col-sm-12">Provincia</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										as="select"
+										defaultValue="Provincia"
+										name="provincia"
+										id="provincia"
+										value={provincia}>
+										<option>Alajuela</option>
+										<option>Cartago</option>
+										<option>Guanacaste</option>
+										<option>Heredia</option>
+										<option>Limón</option>
+										<option>Puntarenas</option>
+										<option>San José</option>
+									</Form.Control>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridState">
+								<Form.Label className="col-sm-12">Cantón</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputCanton"
+										value={canton}
+										placeholder="Ingrese su cantón"
+										onChange={e => setCanton(e.target.value)}
+									/>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridZip">
+								<Form.Label className="col-sm-12">Distrito</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputDistrito"
+										value={distrito}
+										placeholder="Ingrese su distrito"
+										onChange={e => setDistrito(e.target.value)}
+									/>
+								</Col>
+							</Form.Group>
+						</Form.Row>
+
+						{/* DIRECCION EXACTA */}
+
+						<Form.Group className="row p-1" controlId="formGridAddress1">
+							<Form.Label className="col-sm-12">Dirección Exacta</Form.Label>
+							<Col className="col-sm-12">
+								<Form.Control
+									type="text"
+									id="inputDE"
+									value={dir_exacta}
+									placeholder="Ingrese su dirección exacta"
+									onChange={e => setDE(e.target.value)}
+								/>
+							</Col>
+						</Form.Group>
+
+						<h3>Datos de Acceso a la plataforma</h3>
+						<hr />
+						{/* CORREO ELECTRONICO */}
+						<Form.Row>
+							<Form.Group className="row p-1" controlId="formGridEmail">
+								<Form.Label className="col-sm-12">Correo Electrónico</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="text"
+										id="inputEmail"
+										value={email}
+										placeholder="Ingrese su correo electrónico"
+										onChange={e => setEmail(e.target.value)}
+									/>
+								</Col>
+							</Form.Group>
+
+							<Form.Group className="row p-1" controlId="formGridPassword">
+								<Form.Label className="col-sm-12">Contraseña</Form.Label>
+								<Col className="col-sm-12">
+									<Form.Control
+										type="password"
+										id="inputPasword"
+										value={password}
+										placeholder="Ingrese su password"
+										onChange={e => setPassword(e.target.value)}
+									/>
+								</Col>
+							</Form.Group>
+						</Form.Row>
+						<button type="submit" className="btn btn-outline-primary float-right ml-1">
+							Registrarme
+						</button>
+						<Link to="/">
+							<button type="submit" className="btn btn-outline-primary  float-right ml-1">
+								Cancelar
+							</button>
+						</Link>
+					</Form>
+					{auth ? <Redirect to="/login" /> : null}
+				</div>
+			</Row>
+		</Container>
+	);
+};
+
+{
+	/*
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Group, Button, Text, Alert } from "react-bootstrap";
 import misEstilos from "../../styles/misEstilos.css";
@@ -194,7 +509,7 @@ export const Registro = () => {
 					<h3>Datos de Contacto</h3>
 					<hr />
 
-					{/* CEDULA */}
+				
 					<Form.Row>
 						<Form.Group className="row p-1" controlId="formGridCity">
 							<Form.Label className="col-sm-12">Tipo de identificación</Form.Label>
@@ -229,7 +544,7 @@ export const Registro = () => {
 						</Form.Group>
 					</Form.Row>
 
-					{/* NOMBRE Y APELLIDO */}
+					
 					<Form.Row>
 						<Form.Group className="row p-1" controlId="formGridCity">
 							<Form.Label className="col-sm-12" sm="10">
@@ -282,7 +597,7 @@ export const Registro = () => {
 							</Col>
 						</Form.Group>
 					</Form.Row>
-					{/* ******** */}
+					
 					<Form.Row>
 						<Form.Group className="row p-1" controlId="formGridState">
 							<Form.Label className="col-sm-12">Género</Form.Label>
@@ -322,7 +637,7 @@ export const Registro = () => {
 						</Form.Group>
 					</Form.Row>
 
-					{/* LUGAR */}
+					
 					<Form.Row>
 						<Form.Group className="row p-1" controlId="formGridCity">
 							<Form.Label className="col-sm-12">Provincia</Form.Label>
@@ -368,7 +683,7 @@ export const Registro = () => {
 						</Form.Group>
 					</Form.Row>
 
-					{/* DIRECCION EXACTA */}
+					
 
 					<Form.Group className="row p-1" controlId="formGridAddress1">
 						<Form.Label className="col-sm-12">Dirección Exacta</Form.Label>
@@ -379,7 +694,7 @@ export const Registro = () => {
 
 					<h3>Datos de Acceso a la plataforma</h3>
 					<hr />
-					{/* CORREO ELECTRONICO */}
+				
 					<Form.Row>
 						<Form.Group className="row p-1" controlId="formGridEmail">
 							<Form.Label className="col-sm-12">Correo Electrónico</Form.Label>
@@ -411,7 +726,7 @@ export const Registro = () => {
 							</Col>
 						</Form.Group>
 					</Form.Row>
-					{/* ALERTAS*/}
+					
 					<Alert className={id.valido === false ? "alert-danger" : "ocultar"}>
 						Complete el campo de <strong>identificación.</strong>
 					</Alert>
@@ -430,7 +745,7 @@ export const Registro = () => {
 					<Alert className={password1.valido === false ? "alert-danger" : "ocultar"}>
 						Complete el campo de <strong>contraseña.</strong>
 					</Alert>
-					{/* BOTONES */}
+					
 					<Link
 						className={
 							password1.valido === true &&
@@ -455,3 +770,5 @@ export const Registro = () => {
 		</Container>
 	);
 };
+*/
+}

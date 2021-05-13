@@ -20,15 +20,15 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-class registro(db.Model):
+class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     identificacion = db.Column(db.Integer, unique=True, nullable=True)
     tipo_idnt = db.Column(db.String(120), unique=False, nullable=True, default="Pasaporte")
     nombre = db.Column(db.String(120), unique=False, nullable=True)
     apellido1 = db.Column(db.String(120), unique=False, nullable=True)
     apellido2 = db.Column(db.String(120), unique=False, nullable=True)
-    telefono = db.Column(db.Integer, unique=True, nullable=True)
-    fecha_nacimiento = db.Column(db.String, unique=True, nullable=False)
+    telefono = db.Column(db.Integer, unique=False, nullable=True)
+    fecha_nacimiento = db.Column(db.String, unique=False, nullable=False)
     genero = db.Column(db.String(120), unique=False, nullable=True)
     estado_civil = db.Column(db.String(120), unique=False, nullable=True)
     provincia = db.Column(db.String(120), unique=False, nullable=True)
@@ -38,7 +38,7 @@ class registro(db.Model):
 
 
     def __repr__(self):
-       return '<registro %r>' % self.nombre
+       return '<Registro %r>' % self.nombre
 
     def serialize(self):
        return {
@@ -59,3 +59,4 @@ class registro(db.Model):
             # do not serialize the password, its a security breach
         }
 
+#Karla actualiza la fecha, telefono, son datos que se pueden repetirse por otro usuario del sistema por lo tanto va en unique: false
