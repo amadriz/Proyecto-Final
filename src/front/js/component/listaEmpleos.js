@@ -105,7 +105,10 @@ export const ListaEmpleos = () => {
 				</div>
 			</div>
 			<Container className="mt-5">
-				<DropdownButton id="dropdown-basic-button" title={`Mis Favoritos ${store.favorites.length}`}>
+				<DropdownButton
+					className="mb-3"
+					id="dropdown-basic-button"
+					title={`Mis Favoritos ${store.favorites.length}`}>
 					{store.favorites.map((item, index) => {
 						return (
 							<Dropdown.Item href="#/action-1" key={index}>
