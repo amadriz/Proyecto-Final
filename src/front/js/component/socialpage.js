@@ -20,7 +20,7 @@ export const SocialPage = () => {
 	const handleClick = e => {
 		e.preventDefault();
 
-		let url = "https://www.youtube.com/watch?v=ekEr342iAu8/api/registro";
+		let url = "https://empleo45-proyecto-final.herokuapp.com/api/registro";
 		fetch(url)
 			.then(response => response.json())
 			.then(data => mostrarData(data))

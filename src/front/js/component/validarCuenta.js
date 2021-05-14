@@ -19,7 +19,7 @@ export const ValidarCuenta = () => {
 			password: password
 		};
 
-		fetch("https://www.youtube.com/watch?v=ekEr342iAu8/api/register", {
+		fetch("https://empleo45-proyecto-final.herokuapp.com/api/register", {
 			method: "PUT",
 			body: JSON.stringify(body),
 			headers: {
