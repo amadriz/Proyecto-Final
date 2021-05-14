@@ -80,26 +80,27 @@ export const Login = () => {
 					<Col sm={12}>
 						<h1>Ingrese a su perfil</h1>
 						<hr />
+
 						{store.token && store.token != undefined ? (
 							"You are logged in with" + store.token
 						) : (
 							<div>
 								<div>
-									<label>Usuario</label>
+									{/*<label className="col-sm-12 vs-label">Usuario</label>*/}
 									<input
-										className="btnEmail"
+										className="btnInput"
 										type="email"
-										placeholder="Por favor, ingrese su correo electrónico"
+										placeholder="Ingrese su correo electrónico"
 										value={email}
 										onChange={e => cambiarEmail(e.target.value)}
 										required="required"></input>
 								</div>
 								<div>
-									<label>Contraseña</label>
+									{/*<label className="col-sm-12 vs-label">Contraseña</label>*/}
 									<input
-										className="btnEmail"
+										className="btnInput"
 										type="password"
-										placeholder="Por favor, ingrese su contraseña"
+										placeholder="Ingrese su contraseña"
 										value={password}
 										onChange={e => cambiarPassword(e.target.value)}
 										required="required"></input>
@@ -110,17 +111,18 @@ export const Login = () => {
 							</div>
 						)}
 					</Col>
-
-					<Link to="/verificar">
-						<Button variant="btn btn-link" type="submit">
-							¿Ha olvidado su contraseña?
-						</Button>
-					</Link>
-					<Link to="/registro">
-						<Button variant="btn  btn-link" type="submit">
-							¿No tienes cuenta? Regístrese aquí
-						</Button>
-					</Link>
+					<div className="min-footer">
+						<Link to="/verificar">
+							<Button variant="btn btn-link" type="submit">
+								¿Ha olvidado su contraseña?
+							</Button>
+						</Link>
+						<Link to="/registro">
+							<Button variant="btn  btn-link" type="submit">
+								¿No tienes cuenta? Regístrese aquí
+							</Button>
+						</Link>
+					</div>
 				</Row>
 			</Container>
 		</>
@@ -151,7 +153,7 @@ export const Login = () => {
 								<Form.Group controlId="formBasicEmail">
 									<Form.Label>Usuario</Form.Label>
 									<Form.Control
-										className="btnEmail"
+										className="btnInput"
 										type="email"
 										placeholder="Ingrese su correo electrónico"
 										id="email"
@@ -165,7 +167,7 @@ export const Login = () => {
 								<Form.Group controlId="formBasicPassword">
 									<Form.Label>Contraseña</Form.Label>
 									<Form.Control
-										className="btnEmail"
+										className="btnInput"
 										type="password"
 										placeholder="Ingrese su contraseña"
 										id="password1"

@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			listaEmpleos: [],
 			favorites: [],
+			perfilRegistrado: [],
 			token: null
 		},
 		actions: {
@@ -57,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch("https://empleo45-proyecto-final.herokuapp.com/api/token", opts);
+					const resp = await fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/token", opts);
 					if (resp.status !== 200) {
 						alert("Por favor, complete los campos solicitados para continuar");
 						return false;
@@ -70,6 +71,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error("Error en Iniciar Sesión!");
 				}
+			},
+
+			fetchPerfilRegistrado: async () => {
+				const URL = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: {}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
+
+				console.log("*DATA*****", json);
+				//setStore({ perfilRegistrado: json.email });
 			},
 
 			getMessage: () => {

@@ -12,10 +12,42 @@ import {
 	ButtonGroup,
 	DropdownButton
 } from "react-bootstrap";
-
 import useravatar from "../../img/rigo-baby.jpg";
 
 export const SocialPage = () => {
+	const { store, actions } = useContext(Context);
+
+	const handleClick = e => {
+		e.preventDefault();
+
+		let url = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
+		fetch(url)
+			.then(response => response.json())
+			.then(data => mostrarData(data))
+			.catch(error => console.log(error));
+
+		const mostrarData = data => {
+			console.log(data);
+		};
+	};
+
+	{
+		/*const getRegistro = idRegistro => {
+		// console.log(emailRegistro);
+
+		let url = `https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro/${idRegistro}/`;
+		fetch(url)
+			.then(response => response.json())
+			.then(data => mostrarData(data))
+			.catch(error => console.log(error));
+
+		const mostrarData = data => {
+			console.log(data);
+		};
+	};
+
+getRegistro("test@gmail.com"); */
+	}
 	return (
 		<>
 			<Container fluid className="mt-3 mb-5">
@@ -58,7 +90,7 @@ export const SocialPage = () => {
 								</Col>
 								<Card.Body style={{ position: "relative", bottom: "90px" }}>
 									<Card.Title style={{ margin: "0", color: "#00000" }}>
-										Jose Luis Rodriguez Vargas
+										Persona Participante Participante
 									</Card.Title>
 									<Table>
 										<thead>
@@ -73,7 +105,7 @@ export const SocialPage = () => {
 															color: "00000",
 															fontStyle: "italic"
 														}}>
-														elpuma@gmail.com
+														test@gmail.com
 													</Card.Text>
 												</td>
 												<td colSpan="2">
@@ -91,7 +123,7 @@ export const SocialPage = () => {
 															textAlign: "right",
 															color: "00000"
 														}}>
-														Alajuela, Alajuela, Guacima
+														San José, San José, Zapote
 													</Card.Text>
 												</td>
 											</tr>
@@ -103,11 +135,6 @@ export const SocialPage = () => {
 															Editar
 														</Button>
 													</ButtonGroup>
-													{/* <ButtonGroup className="mr-2">
-											<Button variant="info" style={{ position: "relative" }}>
-												Update
-											</Button>
-										</ButtonGroup> */}
 												</td>
 
 												<td colSpan="2">
@@ -127,6 +154,12 @@ export const SocialPage = () => {
 														}}>
 														8888-8888
 													</Card.Text>
+													{/*<Button
+														variant="info"
+														style={{ position: "relative" }}
+														onClick={handleClick}>
+														probar fetch
+                                                    </Button>*/}
 												</td>
 											</tr>
 										</thead>
