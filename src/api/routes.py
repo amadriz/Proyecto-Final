@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 # -Karla- se importa OS
 import os
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, request, jsonify, url_for, Blueprint, flash
 from api.models import db, User, Registro
 from api.utils import generate_sitemap, APIException
 
@@ -174,7 +174,13 @@ def register_user():
     
         db.session.add(user_nuevo)
         db.session.commit()
+
+        flash("Se ha registrado exitosamente")
+        
         return jsonify({"msg": "Usuario creado satisfactorimente"}), 200    
+        
+
+
 
 #-----------------------------------------------------------#
 
@@ -191,10 +197,10 @@ def handle_hello():
 @api.route('/protected', methods=['GET'])
 @jwt_required()
 def protected():
-    current_user_id = get_jwt_identity()
-    usuario = User.query.get(current_user_id)
+    email = get_jwt_identity()
+    usuario = User.query.get(email)
 
-    print(current_user_id, usuario)
+    print(email, usuario)
     return jsonify({"id":usuario.id, "email": usuario.email}), 200
 
 
@@ -266,8 +272,8 @@ def get_registroUser():
     if nuevoUser == nuevoRegistro:
         queryUser = User.query.all()
         queryRegistro = Registro.query.all()
-        all_user = list(map(lambda x: x.serialize(), queryRegistro))
-        all_registro = list(map(lambda x: x.serialize(), queryUser))
+        all_user = list(map(lambda x: x.serialize(), queryUser))
+        all_registro = list(map(lambda x: x.serialize(), queryRegistro))
         return jsonify(all_registro, all_user), 200
       
     else:

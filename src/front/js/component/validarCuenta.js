@@ -19,7 +19,7 @@ export const ValidarCuenta = () => {
 			password: password
 		};
 
-		fetch("https://3001-peach-blackbird-frm2h2uo.ws-us04.gitpod.io/api/register", {
+		fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/register", {
 			method: "PUT",
 			body: JSON.stringify(body),
 			headers: {
@@ -49,7 +49,7 @@ export const ValidarCuenta = () => {
 										type="email"
 										id="inputEmail"
 										value={email}
-										placeholder="Por favor, ingrese su correo electrónico"
+										placeholder="Ingrese su correo electrónico"
 										onChange={e => setCorreo(e.target.value)}
 										required="required"></input>
 								</div>

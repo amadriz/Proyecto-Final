@@ -43,7 +43,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-peach-blackbird-frm2h2uo.ws-us04.gitpod.io/api/registro", {
+		fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -70,7 +70,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-peach-blackbird-frm2h2uo.ws-us04.gitpod.io/api/register", {
+		fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -322,6 +322,7 @@ export const Registro = () => {
 											value={email}
 											placeholder="Ingrese su correo electrónico"
 											onChange={e => setEmail(e.target.value)}
+											required="required"
 										/>
 									</Col>
 								</Form.Group>
@@ -335,6 +336,7 @@ export const Registro = () => {
 											value={password}
 											placeholder="Ingrese su password"
 											onChange={e => setPassword(e.target.value)}
+											required="required"
 										/>
 									</Col>
 								</Form.Group>

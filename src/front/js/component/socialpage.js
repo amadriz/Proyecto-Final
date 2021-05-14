@@ -17,11 +17,39 @@ import useravatar from "../../img/rigo-baby.jpg";
 export const SocialPage = () => {
 	const { store, actions } = useContext(Context);
 
-	{
-		/*useEffect(() => {
-		actions.fetchPerfilRegistrado();
-	}, []);*/
-	}
+	const handleClick = e => {
+		e.preventDefault();
+
+		if (store.token && store.token != "" && store.token != undefined) {
+			let url = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
+			fetch(url)
+				.then(response => response.json())
+				.then(data => mostrarData(data))
+				.catch(error => console.log(error));
+
+			const mostrarData = data => {
+				console.log("Mostrando datos registro" + data);
+			};
+		}
+	};
+
+	const getRegistro = idRegistro => {
+		// console.log(emailRegistro);
+
+		if (store.token && store.token != "" && store.token != undefined) {
+			let url = `https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro/${idRegistro}/`;
+			fetch(url)
+				.then(response => response.json())
+				.then(data => mostrarData(data))
+				.catch(error => console.log(error));
+
+			const mostrarData = data => {
+				console.log(data);
+			};
+		}
+	};
+
+	getRegistro(1);
 
 	return (
 		<>
@@ -108,11 +136,6 @@ export const SocialPage = () => {
 															Editar
 														</Button>
 													</ButtonGroup>
-													{/* <ButtonGroup className="mr-2">
-											<Button variant="info" style={{ position: "relative" }}>
-												Update
-											</Button>
-										</ButtonGroup> */}
 												</td>
 
 												<td colSpan="2">
@@ -132,6 +155,12 @@ export const SocialPage = () => {
 														}}>
 														8888-8888
 													</Card.Text>
+													<Button
+														variant="info"
+														style={{ position: "relative" }}
+														onClick={handleClick}>
+														probar fetch
+													</Button>
 												</td>
 											</tr>
 										</thead>

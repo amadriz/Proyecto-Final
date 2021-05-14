@@ -80,6 +80,7 @@ export const Login = () => {
 					<Col sm={12}>
 						<h1>Ingrese a su perfil</h1>
 						<hr />
+
 						{store.token && store.token != undefined ? (
 							"You are logged in with" + store.token
 						) : (
@@ -89,7 +90,7 @@ export const Login = () => {
 									<input
 										className="btnInput"
 										type="email"
-										placeholder="Por favor, ingrese su correo electrónico"
+										placeholder="Ingrese su correo electrónico"
 										value={email}
 										onChange={e => cambiarEmail(e.target.value)}
 										required="required"></input>
@@ -99,7 +100,7 @@ export const Login = () => {
 									<input
 										className="btnInput"
 										type="password"
-										placeholder="Por favor, ingrese su contraseña"
+										placeholder="Ingrese su contraseña"
 										value={password}
 										onChange={e => cambiarPassword(e.target.value)}
 										required="required"></input>
