@@ -19,7 +19,7 @@ export const ValidarCuenta = () => {
 			password: password
 		};
 
-		fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/register", {
+		fetch("https://www.youtube.com/watch?v=ekEr342iAu8/api/register", {
 			method: "PUT",
 			body: JSON.stringify(body),
 			headers: {

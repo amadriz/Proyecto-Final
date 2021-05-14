@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const resp = await fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/token", opts);
+					const resp = await fetch("https://www.youtube.com/watch?v=ekEr342iAu8/api/token", opts);
 					if (resp.status !== 200) {
 						alert("Por favor, complete los campos solicitados para continuar");
 						return false;
@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			fetchPerfilRegistrado: async () => {
-				const URL = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
+				const URL = "https://www.youtube.com/watch?v=ekEr342iAu8/api/registro";
 				const CONFIG = {
 					method: "GET",
 					headers: {

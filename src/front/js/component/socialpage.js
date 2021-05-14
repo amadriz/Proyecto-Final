@@ -20,7 +20,7 @@ export const SocialPage = () => {
 	const handleClick = e => {
 		e.preventDefault();
 
-		let url = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
+		let url = "https://www.youtube.com/watch?v=ekEr342iAu8/api/registro";
 		fetch(url)
 			.then(response => response.json())
 			.then(data => mostrarData(data))

@@ -43,7 +43,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro", {
+		fetch("https://www.youtube.com/watch?v=ekEr342iAu8/api/registro", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -70,7 +70,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/register", {
+		fetch("https://www.youtube.com/watch?v=ekEr342iAu8/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
