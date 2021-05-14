@@ -85,8 +85,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(URL, CONFIG);
 				const json = await response.json();
 
-				console.log("***DATA***", json);
-				setStore({ perfilRegistrado: json.email });
+				console.log("*DATA*****", json);
+				//setStore({ perfilRegistrado: json.email });
 			},
 
 			getMessage: () => {

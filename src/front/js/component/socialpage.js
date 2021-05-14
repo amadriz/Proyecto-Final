@@ -20,36 +20,34 @@ export const SocialPage = () => {
 	const handleClick = e => {
 		e.preventDefault();
 
-		if (store.token && store.token != "" && store.token != undefined) {
-			let url = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
-			fetch(url)
-				.then(response => response.json())
-				.then(data => mostrarData(data))
-				.catch(error => console.log(error));
+		let url = "https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro";
+		fetch(url)
+			.then(response => response.json())
+			.then(data => mostrarData(data))
+			.catch(error => console.log(error));
 
-			const mostrarData = data => {
-				console.log("Mostrando datos registro" + data);
-			};
-		}
+		const mostrarData = data => {
+			console.log(data);
+		};
 	};
 
-	const getRegistro = idRegistro => {
+	{
+		/*const getRegistro = idRegistro => {
 		// console.log(emailRegistro);
 
-		if (store.token && store.token != "" && store.token != undefined) {
-			let url = `https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro/${idRegistro}/`;
-			fetch(url)
-				.then(response => response.json())
-				.then(data => mostrarData(data))
-				.catch(error => console.log(error));
+		let url = `https://3001-cyan-limpet-9tz3kb8y.ws-us04.gitpod.io/api/registro/${idRegistro}/`;
+		fetch(url)
+			.then(response => response.json())
+			.then(data => mostrarData(data))
+			.catch(error => console.log(error));
 
-			const mostrarData = data => {
-				console.log(data);
-			};
-		}
+		const mostrarData = data => {
+			console.log(data);
+		};
 	};
 
-	getRegistro(1);
+getRegistro("test@gmail.com"); */
+	}
 
 	return (
 		<>
@@ -92,7 +90,9 @@ export const SocialPage = () => {
 									/>
 								</Col>
 								<Card.Body style={{ position: "relative", bottom: "90px" }}>
-									<Card.Title style={{ margin: "0", color: "#00000" }}>Nombre completo</Card.Title>
+									<Card.Title style={{ margin: "0", color: "#00000" }}>
+										Persona Participante Participante
+									</Card.Title>
 									<Table>
 										<thead>
 											<tr>
@@ -106,7 +106,7 @@ export const SocialPage = () => {
 															color: "00000",
 															fontStyle: "italic"
 														}}>
-														elpuma@gmail.com
+														test@gmail.com
 													</Card.Text>
 												</td>
 												<td colSpan="2">
@@ -124,7 +124,7 @@ export const SocialPage = () => {
 															textAlign: "right",
 															color: "00000"
 														}}>
-														Alajuela, Alajuela, Guacima
+														San José, San José, Zapote
 													</Card.Text>
 												</td>
 											</tr>
@@ -155,12 +155,12 @@ export const SocialPage = () => {
 														}}>
 														8888-8888
 													</Card.Text>
-													<Button
+													{/*<Button
 														variant="info"
 														style={{ position: "relative" }}
 														onClick={handleClick}>
 														probar fetch
-													</Button>
+                                                    </Button>*/}
 												</td>
 											</tr>
 										</thead>

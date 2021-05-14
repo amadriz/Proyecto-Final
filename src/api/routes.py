@@ -207,8 +207,9 @@ def protected():
 #-----------------------------------------------------------#
 
 @api.route('/registro', methods=['GET'])
-def registro_hello():
 
+def registro_hello():
+   
     registro_query = Registro.query.all()
     all_registro = list(map(lambda x: x.serialize(), registro_query))
     
