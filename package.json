@@ -83,8 +83,10 @@
 		"react-data-table-component": "^6.11.7",
 		"react-dom": "^16.8.4",
 		"react-icons": "^4.2.0",
+		"react-parallax": "^3.3.0",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
+		"react-scroll-parallax": "^2.4.0",
 		"styled-components": "^5.2.3"
 	}
 }

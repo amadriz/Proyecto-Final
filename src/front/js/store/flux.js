@@ -24,14 +24,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("***DATA***", json);
 				setStore({ listaEmpleos: json.jobs });
 			},
-			// setFavorites: title => {
-			// 	// FUNCION PARA OBTENER EL STORE getStore()
-			// 	const store = getStore();
-			// 	// FUNCION PARA GUARDAR EL STORE setStore
-			// 	//Operador spread para generar un arreglo nuevo con el title agregado
-			// 	setStore({ favorites: [...store.favorites, title] });
-			// 	console.log(store.favorites);
-			// },
+			setFavorites: title => {
+				// 	// FUNCION PARA OBTENER EL STORE getStore()
+				const store = getStore();
+				// FUNCION PARA GUARDAR EL STORE setStore
+				//Operador spread para generar un arreglo nuevo con el title agregado
+				setStore({ favorites: [...store.favorites, title] });
+				console.log(store.favorites);
+			},
 
 			syncTokenFromSessionStorage: () => {
 				const token = sessionStorage.getItem("token");

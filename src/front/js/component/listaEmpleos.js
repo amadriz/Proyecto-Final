@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import { Container, Row, Col, Form, Group, Button, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col, Form, Group, Button, Jumbotron, Dropdown, DropdownButton } from "react-bootstrap";
 import Datatable from "react-data-table-component";
 import misEstilos from "../../styles/misEstilos.css";
 import PropTypes from "prop-types";
@@ -22,27 +22,23 @@ const renderUrl = (val, row) => {
 };
 
 // Esta función agrega un custom cel al datable con el icono para favorito y funcion para guardar favoritos
-const renderFavorito = row => {
+const renderFavorito = val => {
+	console.log(val);
+
 	const { store, actions } = useContext(Context);
-	// return store.listaEmpleos.map((item, index) => {
-	return tablaJobs.map((item, index) => {
-		return (
-			// <Button className="btn btn-outline-success" onClick={() => alert("Agregado a Favoritos")}>
-			// <Button
-			// 	key={index}
-			// 	className="btn btn-outline-success"
-			// 	onClick={() => alert(`Favorito guardado ` + item.title)}>
-			// 	<i className="fas fa-heart" />
-			// </Button>
-			<Button
-				key={index}
-				className="btn btn-outline-success"
-				onClick={() => alert(`Favorito guardado ` + item.title)}>
-				{/* onClick={() => actions.setFavorites(item.title)}> */}
-				{/* FUNCION TERNARIA PARA CAMBIAR EL BOTON DEPENDIENDO SI EXISTE O NO EL TITLE */}
-				<i className="fas fa-heart" />
-			</Button>
-		);
+	return store.listaEmpleos.map((item, index) => {
+		//return tablaJobs.map((item, index) => {
+		if (val.title == item.title) {
+			return (
+				<Button
+					key={index}
+					className="btn btn-outline-success"
+					// onClick={() => alert(`Favorito guardado ` + item.title)}>
+					onClick={() => actions.setFavorites(item.title)}>
+					<i className="fas fa-heart" />
+				</Button>
+			);
+		}
 	});
 };
 
@@ -109,6 +105,18 @@ export const ListaEmpleos = () => {
 				</div>
 			</div>
 			<Container className="mt-5">
+				<DropdownButton
+					className="mb-3"
+					id="dropdown-basic-button"
+					title={`Mis Favoritos ${store.favorites.length}`}>
+					{store.favorites.map((item, index) => {
+						return (
+							<Dropdown.Item href="#/action-1" key={index}>
+								{item}
+							</Dropdown.Item>
+						);
+					})}
+				</DropdownButton>
 				<Datatable
 					columns={columnas}
 					data={store.listaEmpleos}

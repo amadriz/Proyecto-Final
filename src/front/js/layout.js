@@ -15,6 +15,7 @@ import { Registro } from "./component/registro";
 import { Slider } from "./component/slider";
 import { ListaEmpleos } from "./component/listaEmpleos";
 import { Login } from "./component/login";
+import { Parallaxsec } from "./component/parallax";
 
 //create your first component
 const Layout = () => {
@@ -51,8 +52,8 @@ const Layout = () => {
 						<Route exact path="/login">
 							<Login />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/parallax">
+							<Parallaxsec />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

@@ -48,7 +48,6 @@ export const SocialPage = () => {
 
 getRegistro("test@gmail.com"); */
 	}
-
 	return (
 		<>
 			<Container fluid className="mt-3 mb-5">
