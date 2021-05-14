@@ -33,10 +33,10 @@ def create_token():
         return jsonify({"msg": "Para continuar, agregue su email"}), 400
     
     if password is None:
-        return jsonify({"msg": "Para continuar, agregue su nueva contraseña"}), 400
+        return jsonify({"msg": "Para continuar, agregue su contraseña"}), 400
     
     if password == "":
-        return jsonify({"msg": "Para continuar, agregue su nueva contraseña"}), 400
+        return jsonify({"msg": "Para continuar, agregue su contraseña"}), 400
    
     user_current = User.query.filter_by(email=email).first()
     print(user_current.password)
@@ -237,6 +237,40 @@ def add_registro():
     return jsonify(request_body_registro), 200
    #Karla agrega campos que faltan del formulario 12-05-2021 (tipo_idnt, dir_exacta, canton, distrito)
 #-----------------------------------------------------------#
+@api.route('/registroUser', methods=['GET'])
+def get_registroUser():
 
+
+    email = request.json.get("email", None)
+
+    if email is None:
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
+    
+    if email == "":
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
+        
+    if email == " ":
+        return jsonify({"msg": "Por favor, agregue un email"}), 400
+    
+    usuarioUser = User.query.filter_by(email=email).first()   
+    usuarioRegistro = Registro.query.filter_by(email=email).first()   
+    
+    print(usuarioUser.email)
+    print(usuarioRegistro.email)
+    
+    nuevoUser = usuarioUser.email
+    nuevoRegistro = usuarioRegistro.email
+    
+    print(nuevoUser, nuevoRegistro)
+
+    if nuevoUser == nuevoRegistro:
+        queryUser = User.query.all()
+        queryRegistro = Registro.query.all()
+        all_user = list(map(lambda x: x.serialize(), queryRegistro))
+        all_registro = list(map(lambda x: x.serialize(), queryUser))
+        return jsonify(all_registro, all_user), 200
+      
+    else:
+      return jsonify({"msg": "Usuario no Existe en la BD"}), 400
    
 

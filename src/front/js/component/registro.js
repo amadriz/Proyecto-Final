@@ -43,7 +43,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-lavender-ermine-bedu9v2t.ws-us04.gitpod.io/api/registro", {
+		fetch("https://3001-peach-blackbird-frm2h2uo.ws-us04.gitpod.io/api/registro", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -70,7 +70,7 @@ export const Registro = () => {
 
 		//fetch("https://empleo45-proyecto-final.herokuapp.com/api/registro", {
 
-		fetch("https://3001-lavender-ermine-bedu9v2t.ws-us04.gitpod.io/api/register", {
+		fetch("https://3001-peach-blackbird-frm2h2uo.ws-us04.gitpod.io/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {

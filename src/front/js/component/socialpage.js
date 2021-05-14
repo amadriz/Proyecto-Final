@@ -16,7 +16,12 @@ import useravatar from "../../img/rigo-baby.jpg";
 
 export const SocialPage = () => {
 	const { store, actions } = useContext(Context);
-	console.log(store.favorites);
+
+	{
+		/*useEffect(() => {
+		actions.fetchPerfilRegistrado();
+	}, []);*/
+	}
 
 	return (
 		<>
@@ -59,9 +64,7 @@ export const SocialPage = () => {
 									/>
 								</Col>
 								<Card.Body style={{ position: "relative", bottom: "90px" }}>
-									<Card.Title style={{ margin: "0", color: "#00000" }}>
-										Jose Luis Rodriguez Vargas
-									</Card.Title>
+									<Card.Title style={{ margin: "0", color: "#00000" }}>Nombre completo</Card.Title>
 									<Table>
 										<thead>
 											<tr>
